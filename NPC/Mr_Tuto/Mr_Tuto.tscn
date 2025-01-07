@@ -1,6 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://bswsq47an50w6"]
+[gd_scene load_steps=10 format=3 uid="uid://bswsq47an50w6"]
 
 [ext_resource type="Texture2D" uid="uid://cmqvpbv6k202k" path="res://NPC/Mr_Tuto/mr_tuto_idle.png" id="1_twavl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y5ib"]
+atlas = ExtResource("1_twavl")
+region = Rect2(0, 0, 36, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t732b"]
+atlas = ExtResource("1_twavl")
+region = Rect2(36, 0, 36, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhk7d"]
+atlas = ExtResource("1_twavl")
+region = Rect2(0, 90, 36, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpsnp"]
+atlas = ExtResource("1_twavl")
+region = Rect2(36, 90, 36, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ic0"]
+atlas = ExtResource("1_twavl")
+region = Rect2(0, 180, 36, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nj7r"]
+atlas = ExtResource("1_twavl")
+region = Rect2(36, 180, 36, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cewd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y5ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t732b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhk7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpsnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ic0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nj7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhfgq"]
 size = Vector2(35, 81)
@@ -8,8 +58,10 @@ size = Vector2(35, 81)
 [node name="MrTuto" type="CharacterBody2D"]
 collision_layer = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_twavl")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cewd5")
+autoplay = "default"
+frame_progress = 0.636702
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4.5)
