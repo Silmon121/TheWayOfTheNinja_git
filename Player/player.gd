@@ -42,6 +42,7 @@ signal chakraChanged
 @export var chakraRecoveryRate: float = 0.5;
 @export var fireball1_cast: float = 10;
 @onready var fireBallReady: bool = true;
+@onready var chakraRegenerating: bool = false;
 #COMBAT
 @onready var attack = false
 @onready var animationFinished = true
@@ -71,7 +72,7 @@ func movement(delta,staminaCheck:Callable):
 			if(falling):
 				falling = false
 				$landOnFloor.play()
-			if(moveDirection != 0):
+			if(moveDirection != 0 and !Input.is_action_pressed("regenerateChakra")):
 				#RUN MOVEMENT
 				if (Input.is_action_pressed("sprint") and staminaDepleated == false):
 					position.x += moveDirection * sprintSpeed * delta
@@ -109,10 +110,12 @@ func updateAnimation():
 		if(!attack):
 			if is_on_floor():
 				#IDLE ANIMATION
-				if moveDirection == 0:
+				if moveDirection == 0 and !Input.is_action_pressed("regenerateChakra"):
 					animation.play("idle"+ animationDirection)
+				elif Input.is_action_just_pressed("regenerateChakra"):
+					animation.play("chakraRegen" + animationDirection)
 				#WALK AND RUN ANIMATION
-				elif (moveDirection != 0):
+				elif (moveDirection != 0 and !Input.is_action_pressed("regenerateChakra")):
 					if (Input.is_action_pressed("sprint") and staminaDepleated == false):
 						animation.play("run"+animationDirection)
 					else:
