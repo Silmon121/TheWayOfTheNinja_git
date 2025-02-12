@@ -10,7 +10,6 @@ func _physics_process(delta):
 func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
-	
 func destroy():
 	queue_free()
 func _on_fire_ball_1_area_area_entered(area):

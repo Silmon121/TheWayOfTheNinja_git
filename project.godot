@@ -33,6 +33,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="2D test"
 
+[editor_plugins]
+
+enabled=PackedStringArray()
+
 [input]
 
 left={

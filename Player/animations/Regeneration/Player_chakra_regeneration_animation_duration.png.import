@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgbma7cyshe35"
-path="res://.godot/imported/fireBallCooldown.png-6d1bffc7216ef539769211e5b2370caf.ctex"
+uid="uid://2ean7jqd5yor"
+path="res://.godot/imported/Player_chakra_regeneration_animation_duration.png-3fc3a46946b24f9103dd15cc834b3c67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Cooldown/fireBallCooldown.png"
-dest_files=["res://.godot/imported/fireBallCooldown.png-6d1bffc7216ef539769211e5b2370caf.ctex"]
+source_file="res://Player/animations/Regeneration/Player_chakra_regeneration_animation_duration.png"
+dest_files=["res://.godot/imported/Player_chakra_regeneration_animation_duration.png-3fc3a46946b24f9103dd15cc834b3c67.ctex"]
 
 [params]
 

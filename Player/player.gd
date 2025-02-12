@@ -44,8 +44,10 @@ signal chakraChanged
 @onready var fireBallReady: bool = true;
 @onready var chakraRegenerating: bool = false;
 #COMBAT
+signal fireBallCasted
 @onready var attack = false
-@onready var animationFinished = true
+@onready var attackAnimationFinished = true;
+@onready var chakraAnimationFinished = false;
 @onready var shurikenReady = true;
 @onready var kunaiReady = true;
 #UNARMED_COMBAT
@@ -65,7 +67,7 @@ func _physics_process(delta):
 		chakraControl()
 #MOVEMENT - ALLOWS PLAYER TO MOVE, BUT DOESN'T CHANGE ANIMATIONS!
 func movement(delta,staminaCheck:Callable):
-	if Input.is_action_just_pressed("attack") and is_on_floor():
+	if Input.is_action_just_pressed("attack") and is_on_floor() and !chakraRegenerating:
 		attack = true
 	if(!attack):
 		if(is_on_floor()):
@@ -110,10 +112,12 @@ func updateAnimation():
 		if(!attack):
 			if is_on_floor():
 				#IDLE ANIMATION
-				if moveDirection == 0 and !Input.is_action_pressed("regenerateChakra"):
+				if moveDirection == 0 and !chakraRegenerating:
 					animation.play("idle"+ animationDirection)
-				elif Input.is_action_just_pressed("regenerateChakra"):
+				if Input.is_action_just_pressed("regenerateChakra") and !chakraRegenerating:
 					animation.play("chakraRegen" + animationDirection)
+				elif chakraAnimationFinished and Input.is_action_pressed("regenerateChakra"):
+					animation.play("chakraRegenDuration" + animationDirection)
 				#WALK AND RUN ANIMATION
 				elif (moveDirection != 0 and !Input.is_action_pressed("regenerateChakra")):
 					if (Input.is_action_pressed("sprint") and staminaDepleated == false):
@@ -127,15 +131,15 @@ func updateAnimation():
 				#FALL ANIMATION
 				elif velocity.y > 0:
 					animation.play("fall"+ animationDirection)
-		elif attack and Input.is_action_just_pressed("attack") and animationFinished and is_on_floor():
+		elif attack and Input.is_action_just_pressed("attack") and attackAnimationFinished and is_on_floor():
 			animation.play("katanaAttack1"+ animationDirection)
 #COMBAT - ALLOWS PLAYER TO ATTACK
 func combat():
 	#MELEE_COMBAT
-	if(Input.is_action_just_pressed("attack") and attack and animationFinished and is_on_floor()):
+	if(Input.is_action_just_pressed("attack") and attack and attackAnimationFinished and is_on_floor()):
 		$KatanaDamageBox/CollisionShape2D.disabled = false
-		attack = true
-		animationFinished = false
+		#attack = true
+		attackAnimationFinished = false
 		$KatanaSwing.play()
 	else:
 		$KatanaDamageBox/CollisionShape2D.disabled = true
@@ -181,6 +185,7 @@ func combat():
 		$FireBallCD.start()
 		currentChakra -= fireball1_cast
 		chakraChanged.emit()
+		fireBallCasted.emit()
 #COLIDE REGISTRATION
 #WHEN PLAYER COLIDES WITH AN ENEMY
 func _on_hurt_box_area_entered(area):
@@ -236,12 +241,21 @@ func directionControl():
 		globalChange.animationDirection = "Left"
 #CHAKRA_CONTROL
 func chakraControl():
-	if(Input.is_action_pressed("regenerateChakra") and currentChakra + chakraRecoveryRate < maxChakra):
-		currentChakra += chakraRecoveryRate
-		chakraChanged.emit()
-	elif(Input.is_action_pressed("regenerateChakra")):
-		currentChakra = maxChakra
-		chakraChanged.emit()
+	if(!attack):
+		if(Input.is_action_pressed("regenerateChakra") and chakraAnimationFinished and currentChakra + chakraRecoveryRate < maxChakra):
+			currentChakra += chakraRecoveryRate
+			chakraChanged.emit()
+		elif(Input.is_action_pressed("regenerateChakra") and chakraAnimationFinished):
+			currentChakra = maxChakra
+			chakraChanged.emit()
+		if(Input.is_action_just_released("regenerateChakra")):
+			chakraAnimationFinished = false;
+			chakraRegenerating = false;
+		if(Input.is_action_just_pressed("regenerateChakra")):
+			chakraRegenerating = true;
+	else:
+		chakraRegenerating = false;
+	
 #TIMERS
 #FUNCTION THAT CHECKS IF TIMERS HAVE TO BE STARTED
 func timerControl(): #CONTROLS WHEN TO START TIMER
@@ -264,7 +278,9 @@ func _on_kunai_cd_timeout():
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "katanaAttack1Right" or anim_name == "katanaAttack1Left"):
 		attack = false
-		animationFinished = true
+		attackAnimationFinished = true
+	elif(anim_name == "chakraRegenRight" or anim_name == "chakraRegenLeft"):
+		chakraAnimationFinished = true
 #CONTROLS IN WHICH LEVEL PLAYER CURRENTLY IS
 func levelControl():
 	if(get_tree().get_root().get_node("tutorialLevel") != null):

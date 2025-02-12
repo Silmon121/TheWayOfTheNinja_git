@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d38fvd88jrdip"]
+[gd_scene load_steps=16 format=3 uid="uid://d38fvd88jrdip"]
 
 [ext_resource type="Script" path="res://UIScene.gd" id="1_1j2un"]
 [ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://UI/Bars/Sprites/Health_Bar_case.png" id="1_fu162"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dwj21ufo0eato" path="res://UI/Bars/Sprites/Chakra_Bar_progress.png" id="8_kc7g3"]
 [ext_resource type="Script" path="res://UI/Bars/ChakraBar.gd" id="9_w5mb5"]
 [ext_resource type="Script" path="res://UI/Bars/ChakraCounter.gd" id="10_upgum"]
+[ext_resource type="Texture2D" uid="uid://d3ia5tx37h5v3" path="res://UI/Cooldown/firball_cooldown_frame.png" id="12_htg8f"]
+[ext_resource type="Texture2D" uid="uid://bam3cqpnb2cek" path="res://UI/Cooldown/firball_cooldown_frame_fill.png" id="13_2m8eq"]
+[ext_resource type="Script" path="res://FireballActionButton.gd" id="13_h40my"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2db4j"]
 font_size = 6
@@ -92,3 +95,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_upgum")
 ui = NodePath("../../..")
+
+[node name="FireballActionButton" type="TextureButton" parent="."]
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 28.0
+offset_bottom = 64.0
+texture_normal = ExtResource("12_htg8f")
+stretch_mode = 0
+script = ExtResource("13_h40my")
+
+[node name="Cooldown" type="TextureProgressBar" parent="FireballActionButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+fill_mode = 5
+texture_progress = ExtResource("13_2m8eq")
