@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://b5c3jw6j5v2mx"]
+
+[ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://assets/art/ui/hud/bars/bar_frame.png" id="1_fu162"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/hud.gd" id="1_scu5f"]
+[ext_resource type="Texture2D" uid="uid://cyv8xa2hkviuk" path="res://assets/art/ui/hud/bars/health_progress.png" id="2_kgjfl"]
+[ext_resource type="Texture2D" uid="uid://bdkpvd32t2k6t" path="res://assets/art/ui/hud/bars/stamina_progress.png" id="3_toukv"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/health_bar.gd" id="4_f2cvy"]
+[ext_resource type="Texture2D" uid="uid://dwj21ufo0eato" path="res://assets/art/ui/hud/bars/chakra_progress.png" id="4_ogum4"]
+[ext_resource type="Texture2D" uid="uid://d3ia5tx37h5v3" path="res://assets/art/ui/hud/action_buttons/fireball_cd_frame.png" id="5_de5kw"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/health_counter.gd" id="5_faunw"]
+[ext_resource type="Texture2D" uid="uid://bam3cqpnb2cek" path="res://assets/art/ui/hud/action_buttons/button_fill.png" id="6_3kev8"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/stamina_bar.gd" id="7_gu0f2"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/stamina_counter.gd" id="8_8jslx"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/chakra_bar.gd" id="10_kjd66"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/chakra_counter.gd" id="11_u5t7w"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/fireball_action_button.gd" id="13_rqpbe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_erq21"]
+font_size = 6
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scu5f")
+
+[node name="BarsCon" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("2_kgjfl")
+script = ExtResource("4_f2cvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/HealthBar"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="HPCounter" type="Label" parent="BarsCon/VBoxContainer/HealthBar/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_faunw")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("3_toukv")
+script = ExtResource("7_gu0f2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/StaminaBar"]
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="StaminaCounter" type="Label" parent="BarsCon/VBoxContainer/StaminaBar/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_8jslx")
+
+[node name="ChakraBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("4_ogum4")
+script = ExtResource("10_kjd66")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/ChakraBar"]
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="ChakraCounter" type="Label" parent="BarsCon/VBoxContainer/ChakraBar/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_u5t7w")
+
+[node name="ActionButtonsCon" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 108.0
+offset_bottom = 56.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionButtonsCon"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FireballButton" type="TextureButton" parent="ActionButtonsCon/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_de5kw")
+stretch_mode = 0
+script = ExtResource("13_rqpbe")
+
+[node name="CD" type="TextureProgressBar" parent="ActionButtonsCon/HBoxContainer/FireballButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+value = 80.0
+fill_mode = 5
+texture_progress = ExtResource("6_3kev8")
+tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
