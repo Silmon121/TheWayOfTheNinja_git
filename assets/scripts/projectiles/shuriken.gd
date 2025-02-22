@@ -14,7 +14,8 @@ func _ready():
 func destroy():
 	queue_free()
 func _on_shuriken_area_area_entered(area):
-	if(area.name == "hitArea"):
+	if area.is_in_group("enemy"):
+		DamageNumbers.displayNumber(10,area.global_position)
 		%ShurikenHit.play()
 		hide()
 		if(!%ShurikenHit.playing):

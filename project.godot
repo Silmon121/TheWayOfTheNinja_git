@@ -24,6 +24,7 @@ StaminaManager="*res://assets/scripts/autoload/player_managers/stamina_manager.g
 ChakraManager="*res://assets/scripts/autoload/player_managers/chakra_manager.gd"
 AbilityManager="*res://assets/scripts/autoload/player_managers/ability_manager.gd"
 LevelManager="*res://assets/scripts/autoload/player_managers/level_manager.gd"
+DirectionManager="*res://assets/scripts/autoload/player_managers/direction_manager.gd"
 
 [display]
 

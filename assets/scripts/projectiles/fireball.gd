@@ -15,12 +15,11 @@ func _physics_process(delta):
 func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
-	
 func destroy():
 	queue_free()
-	
 func _on_fire_ball_1_area_area_entered(area):
-	if(area.name == "hitArea"):
+	if area.is_in_group("enemy"):
+		DamageNumbers.displayNumber(30,area.global_position)
 		$FireBallHit.play()
 		hide()
 		if(!$FireBallHit.playing):

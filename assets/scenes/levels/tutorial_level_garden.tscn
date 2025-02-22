@@ -172,7 +172,7 @@ layer_2/tile_data = PackedInt32Array()
 position = Vector2(472, 248)
 
 [node name="Player" parent="." instance=ExtResource("2_vag8a")]
-position = Vector2(192, 240)
+position = Vector2(179, 249)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -352

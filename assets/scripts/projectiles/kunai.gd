@@ -17,7 +17,8 @@ func destroy():
 
 
 func _on_kunai_area_area_entered(area):
-	if(area.name == "hitArea"):
+	if area.is_in_group("enemy"):
+		DamageNumbers.displayNumber(15,area.global_position)
 		$KunaiHit.play()
 		hide()
 		if(!$KunaiHit.playing):
