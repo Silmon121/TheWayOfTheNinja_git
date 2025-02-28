@@ -1,14 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://b12ojrm7k1cwu"]
+[gd_scene load_steps=18 format=3 uid="uid://b12ojrm7k1cwu"]
 
 [ext_resource type="Texture2D" uid="uid://cb5ebl814ojfa" path="res://assets/art/levels/tutorial_level/dojo/tileset/dojo_tileset.png" id="1_fu15l"]
+[ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/dojo/tutorial_level_dojo.gd" id="1_ow8p2"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="2_sjk47"]
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="3_r42wm"]
+[ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="4_h6plk"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_vgfj6"]
 [ext_resource type="PackedScene" uid="uid://c2hv1hesjbdxb" path="res://assets/scenes/npcs/training_dummy.tscn" id="5_6g855"]
 [ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="5_ijjyi"]
 [ext_resource type="AudioStream" uid="uid://casc0uxi4dbq0" path="res://assets/audio/music/dojo.wav" id="6_2lqry"]
-[ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/dojo/dojo_door_area.gd" id="6_iu4oj"]
 [ext_resource type="Texture2D" uid="uid://bns361qinapt2" path="res://assets/art/levels/tutorial_level/dojo/sprites/weapon_rack.png" id="8_520b4"]
+[ext_resource type="PackedScene" uid="uid://bb776lvmqtc3w" path="res://assets/scenes/areas/next_level_area.tscn" id="8_mq6qp"]
+[ext_resource type="PackedScene" uid="uid://dwi6qecowb77q" path="res://assets/scenes/ui/hud/interact_button_guide.tscn" id="9_qygfe"]
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="11_xargs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayj06"]
@@ -237,10 +240,14 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ayj06")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcoxr"]
-size = Vector2(288, 168)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gk1v"]
+size = Vector2(35, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
+size = Vector2(12.3269, 92.9673)
 
 [node name="TutorialLevelDojo" type="Node2D"]
+script = ExtResource("1_ow8p2")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lsfon")
@@ -265,10 +272,21 @@ layer_2/z_index = 5
 layer_2/tile_data = PackedInt32Array(655357, 131072, 6, 655356, 0, 7, 589821, 327680, 6, 524285, 327680, 6, 458749, 327680, 6, 393213, 327680, 6, 327677, 327680, 6, 262141, 327680, 6, 196605, 327680, 6, 131069, 327680, 6, 65533, 327680, 6, 589820, 196608, 6, 524284, 196608, 6, 458748, 196608, 6, 393212, 196608, 6, 327676, 196608, 6, 262140, 196608, 6, 196604, 196608, 6, 131068, 196608, 6, 65532, 196608, 6, 589855, 131072, 7, 589854, 0, 5, 524318, 196608, 6, 458782, 196608, 6, 393246, 196608, 6, 327710, 196608, 6, 262174, 196608, 6, 196638, 196608, 6, 131102, 196608, 6, 65566, 196608, 6, 30, 196608, 6, 524319, 327680, 6, 458783, 327680, 6, 393247, 327680, 6, 327711, 327680, 6, 262175, 327680, 6, 196639, 327680, 6, 131103, 327680, 6, 65567, 327680, 6, 31, 327680, 6)
 
 [node name="TrainingDummy" parent="TileMap" instance=ExtResource("5_6g855")]
+z_index = 10
 position = Vector2(456, 256)
 
 [node name="MrTuto" parent="TileMap" instance=ExtResource("3_r42wm")]
 position = Vector2(280, 248)
+
+[node name="DialogAreaMrTuto2" parent="TileMap/MrTuto" node_paths=PackedStringArray("npc") instance=ExtResource("4_h6plk")]
+scale = Vector2(0.996473, 0.996362)
+npc = NodePath("..")
+dialog_key = "start"
+character = "mr_tuto"
+
+[node name="CollisionShape2D" parent="TileMap/MrTuto/DialogAreaMrTuto2" index="0"]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_8gk1v")
 
 [node name="WeaponRack" type="Sprite2D" parent="TileMap"]
 position = Vector2(208, 256)
@@ -279,19 +297,28 @@ position = Vector2(704, 256)
 texture = ExtResource("8_520b4")
 
 [node name="DojoDoor" type="Sprite2D" parent="TileMap"]
-z_index = -20
-position = Vector2(464, 198)
+position = Vector2(464, 207)
+scale = Vector2(1, 0.9)
 texture = ExtResource("5_ijjyi")
 
-[node name="DojoDoorArea" type="Area2D" parent="TileMap/DojoDoor"]
-script = ExtResource("6_iu4oj")
+[node name="NextLevelArea" parent="TileMap/DojoDoor" node_paths=PackedStringArray("interact_button_guide") instance=ExtResource("8_mq6qp")]
+next_level = "res://assets/scenes/levels/tutorial_level_garden.tscn"
+interact_button_guide = NodePath("../InteractButtonGuide")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/DojoDoor/DojoDoorArea"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_lcoxr")
+[node name="CollisionShape2D" parent="TileMap/DojoDoor/NextLevelArea" index="0"]
+position = Vector2(-101, 0.434814)
+rotation = -3.14159
+scale = Vector2(6.68475, -1.89771)
+shape = SubResource("RectangleShape2D_f1ja3")
+
+[node name="InteractButtonGuide" parent="TileMap/DojoDoor" instance=ExtResource("9_qygfe")]
+offset_left = -112.0
+offset_top = -112.222
+offset_right = -96.0
+offset_bottom = -96.2222
 
 [node name="Player" parent="." instance=ExtResource("2_sjk47")]
-position = Vector2(128, 248)
+position = Vector2(103, 248)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -128
@@ -315,8 +342,9 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="DojoAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("6_2lqry")
 autoplay = true
 
-[connection signal="area_entered" from="TileMap/DojoDoor/DojoDoorArea" to="TileMap/DojoDoor/DojoDoorArea" method="_on_area_entered"]
-[connection signal="area_exited" from="TileMap/DojoDoor/DojoDoorArea" to="TileMap/DojoDoor/DojoDoorArea" method="_on_area_exited"]
+[editable path="TileMap/MrTuto/DialogAreaMrTuto2"]
+[editable path="TileMap/DojoDoor/NextLevelArea"]

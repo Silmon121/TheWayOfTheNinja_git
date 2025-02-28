@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bswsq47an50w6"]
+[gd_scene load_steps=11 format=3 uid="uid://bswsq47an50w6"]
 
 [ext_resource type="Texture2D" uid="uid://cmqvpbv6k202k" path="res://assets/animations/npcs/mr_tuto/mr_tuto_idle.png" id="1_twavl"]
+[ext_resource type="PackedScene" uid="uid://dwi6qecowb77q" path="res://assets/scenes/ui/hud/interact_button_guide.tscn" id="2_qgx1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y5ib"]
 atlas = ExtResource("1_twavl")
@@ -53,16 +54,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhfgq"]
-size = Vector2(35, 81)
+size = Vector2(35, 85)
 
 [node name="MrTuto" type="CharacterBody2D"]
 collision_layer = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_cewd5")
 autoplay = "default"
 frame_progress = 0.636702
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 4.5)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_rhfgq")
+
+[node name="InteractButtonGuide" parent="." instance=ExtResource("2_qgx1k")]
+unique_name_in_owner = true
+visible = false
+offset_left = -7.0
+offset_top = -57.0
+offset_right = 9.0
+offset_bottom = -41.0

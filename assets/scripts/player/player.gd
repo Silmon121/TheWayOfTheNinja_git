@@ -18,13 +18,17 @@ class_name Player
 @onready var attack_anim_finished = true;
 @onready var chakra_anim_finished = false;
 
+@onready var area_counter: int = 0
+@onready var area_list: Array
 func _ready():
 	$KatanaDamageBox/CollisionShape2D.disabled = true
 	LevelManager.get_current_scene() #This will get the main node of the scene where the player currently is.
+	DialogManager.dialog_opened.connect(idle) #When the dialog opens, then the player will enter idle state.
 func _physics_process(delta):
-	if !LevelManager.game_paused:
-		move_and_slide()
-		player_physics(delta)
+	move_and_slide()
+	player_physics(delta)
+	if area_counter >= 2:
+		print(get_nearest_area())
 func _input(event):
 	if event.is_action_released("regenerate_chakra"):
 		chakra_anim_finished = false
@@ -49,7 +53,7 @@ func player_physics(delta):
 		#This will play landing sound
 		if AbilityManager.falling:
 			AbilityManager.falling = false
-			$landOnFloor.play()
+			%LandOnWood.play()
 		if Input.is_action_just_pressed("attack") and !Input.is_action_pressed("regenerate_chakra") and attack_anim_finished:
 			katana_attack()
 		if attack_anim_finished:
@@ -79,24 +83,24 @@ func walk(delta):
 	if StaminaManager.stamina_recover_allowed:
 		StaminaManager.recover_stamina(1) #Stamina starts recovering with multiplier set to 1x because the player is walking
 	current_speed = walk_speed
-	$footstepsRun.stop()
-	if !$WalkFootsteps.playing:
-		$WalkFootsteps.play()
+	%FootstepsRun.stop()
+	if !%FootstepsWalk.playing:
+		%FootstepsWalk.play()
 func run(delta):
 	position.x += DirectionManager.move_direction * sprint_speed * delta
 	animation.play("run"+ DirectionManager.anim_direction)
 	StaminaManager.deplete_stamina(StaminaManager.stamina_depletion_rate)
 	current_speed = sprint_speed
-	$WalkFootsteps.stop()
-	if(!$footstepsRun.playing):
-		$footstepsRun.play()
+	%FootstepsWalk.stop()
+	if(!%FootstepsRun.playing):
+		%FootstepsRun.play()
 func jump():
 	velocity.y = jump_velocity
 	animation.play("jump"+ DirectionManager.anim_direction)
 	AbilityManager.jumped.emit()
 	StaminaManager.deplete_stamina(StaminaManager.stamina_jump_cost)
-	$WalkFootsteps.stop()
-	$footstepsRun.stop()
+	%FootstepsWalk.stop()
+	%FootstepsRun.stop()
 func fall(delta):
 	velocity.y += gravity * delta
 	position.x += current_speed * DirectionManager.move_direction * delta
@@ -104,33 +108,34 @@ func fall(delta):
 		animation.play("fall"+ DirectionManager.anim_direction)
 	AbilityManager.falling = true
 func idle():
+	attack_anim_finished = true
 	if stamina_recover_timer.time_left == 0 and StaminaManager.current_stamina != StaminaManager.max_stamina and !StaminaManager.stamina_recover_allowed:
 		stamina_recover_timer.start()
 	animation.play("idle"+ DirectionManager.anim_direction)
 	if StaminaManager.stamina_recover_allowed:
 		StaminaManager.recover_stamina(2) #Stamina starts recovering with multiplier 2x because the player is standing still
-	$WalkFootsteps.stop()
-	$footstepsRun.stop()
+	%FootstepsWalk.stop()
+	%FootstepsRun.stop()
 #COMBAT METHODS
 #MELEE COMBAT
 func katana_attack():
 	$KatanaDamageBox/CollisionShape2D.disabled = false
 	attack_anim_finished = false
 	animation.play("katanaAttack1"+ DirectionManager.anim_direction)
-	$KatanaSwing.play()
+	%KatanaSwing.play()
 #PROJECTILES
 func throw_kunai():
 	AbilityManager.kunai_ready = false
 	AbilityManager.kunai_thrown.emit()
 	#Creates new kunai instance that is added to the scene using add_child to the current_scene
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_kunai(global_position))
-	$kunaiThrow.play()
+	%KunaiThrow.play()
 func throw_shuriken():
 	AbilityManager.shuriken_ready = false
 	AbilityManager.shuriken_thrown.emit()
 	#Creates new shuriken instance that is added to the scene using add_child to the current_scene
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_shuriken(global_position))
-	$ShurikenThrow.play()
+	%ShurikenThrow.play()
 func cast_fireball():
 	AbilityManager.fireball_ready = false
 	AbilityManager.fireball_casted.emit()
@@ -139,7 +144,7 @@ func cast_fireball():
 	#Adds fireball instance to the scene
 	#Call deferred is jsut a safe way to add child into the scene, because it won't destroy the frames and godot won't be confused.
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_fireball(global_position))
-	$FireBallCast.play()
+	%FireballCast.play()
 func regenerate_chakra():
 	if stamina_recover_timer.time_left == 0 and StaminaManager.current_stamina != StaminaManager.max_stamina and !StaminaManager.stamina_recover_allowed:
 		stamina_recover_timer.start()
@@ -170,3 +175,24 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_katana_damage_box_area_entered(area):
 	if area.is_in_group("enemy"):
 		DamageNumbers.displayNumber(25,area.global_position)
+
+
+func _on_player_interaction_area_area_entered(area):
+	area_counter += 1
+	if area not in area_list:
+		area_list.append(area)
+func _on_player_interaction_area_area_exited(area):
+	area_counter -= 1
+	area_list.erase(area)
+func get_nearest_area() -> Node:
+	var area1 = get_distance_to_area(area_list[0])
+	var area2 = get_distance_to_area(area_list[1])
+	var nearest_area: Node
+	if area1 >= area2:
+		nearest_area = area_list[0]
+	else:
+		nearest_area = area_list[1]
+	return nearest_area
+func get_distance_to_area(area):
+	return self.position.distance_to(area.position)
+	

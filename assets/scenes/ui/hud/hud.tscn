@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5c3jw6j5v2mx"]
+[gd_scene load_steps=25 format=3 uid="uid://b5c3jw6j5v2mx"]
 
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/hud.gd" id="1_65hfs"]
 [ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://assets/art/ui/hud/bars/bar_frame.png" id="1_fu162"]
 [ext_resource type="Texture2D" uid="uid://cyv8xa2hkviuk" path="res://assets/art/ui/hud/bars/health_progress.png" id="2_kgjfl"]
 [ext_resource type="Texture2D" uid="uid://bdkpvd32t2k6t" path="res://assets/art/ui/hud/bars/stamina_progress.png" id="3_toukv"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/shuriken_action_button.gd" id="12_pwhf1"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/fireball_action_button.gd" id="13_rqpbe"]
 [ext_resource type="Texture2D" uid="uid://bk0ypdkd6maun" path="res://assets/art/ui/hud/action_buttons/shuriken_cooldown_frame.png" id="13_xb00w"]
+[ext_resource type="Texture2D" uid="uid://cts5vl4514w5k" path="res://assets/art/ui/hud/dialogue/dialogue_box.png" id="16_bhr1p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_erq21"]
 font_size = 6
@@ -27,15 +29,31 @@ font_size = 5
 [sub_resource type="LabelSettings" id="LabelSettings_aftj3"]
 font_size = 5
 
+[sub_resource type="LabelSettings" id="LabelSettings_g7d61"]
+line_spacing = 0.0
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvsn1"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_ns5mm"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7v8c"]
+font_size = 8
+
 [node name="Hud" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_65hfs")
 
 [node name="BarsCon" type="MarginContainer" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 40.0
@@ -106,6 +124,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ActionButtonsCon" type="MarginContainer" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_top = 39.0
 offset_right = 108.0
@@ -213,6 +232,79 @@ text = "S"
 label_settings = SubResource("LabelSettings_aftj3")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DialogBoxCon" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -95.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="TextureRect" parent="DialogBoxCon"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("16_bhr1p")
+
+[node name="DialogHeadLabel" type="Label" parent="DialogBoxCon/Background"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 78.0
+offset_bottom = 21.0
+text = "Mr. Tuto"
+label_settings = SubResource("LabelSettings_g7d61")
+vertical_alignment = 1
+
+[node name="DialogTextLabel" type="Label" parent="DialogBoxCon/Background"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 247.0
+offset_bottom = 92.0
+text = "test"
+label_settings = SubResource("LabelSettings_cvsn1")
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -87.0
+offset_bottom = 46.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "=Quests="
+label_settings = SubResource("LabelSettings_ns5mm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Talk to Mr. Totu: 0/1"
+label_settings = SubResource("LabelSettings_p7v8c")
 
 [connection signal="timeout" from="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton/FireballCDTimer" to="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton" method="_on_fireball_cd_timer_timeout"]
 [connection signal="timeout" from="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton/KunaiCDTimer" to="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton" method="_on_kunai_cd_timer_timeout"]

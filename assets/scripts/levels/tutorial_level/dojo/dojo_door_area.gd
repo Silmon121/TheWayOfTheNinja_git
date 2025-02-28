@@ -2,10 +2,10 @@ extends Area2D
 
 var insideArea = false
 func _on_area_entered(area):
-	if(area.name == "hurtBox"):
+	if(area.name == "HurtBox"):
 		insideArea = true
 func _on_area_exited(area):
-	if(area.name == "hurtBox"):
+	if(area.name == "HurtBox"):
 		insideArea = false
 func _input(event):
 	if(insideArea and event.is_action_pressed("interact")):
