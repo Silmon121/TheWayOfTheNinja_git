@@ -21,3 +21,4 @@ func restore_player_parameters():
 	HealthManager.fill_health()
 	StaminaManager.fill_stamina()
 	ChakraManager.fill_chakra()
+	AbilityManager.restore_abilities()

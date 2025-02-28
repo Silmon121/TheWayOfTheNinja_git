@@ -10,3 +10,8 @@ signal fireball_casted
 signal shuriken_thrown
 signal kunai_thrown
 signal jumped
+
+func restore_abilities():
+	fireball_ready = true
+	kunai_ready = true
+	shuriken_ready = true
