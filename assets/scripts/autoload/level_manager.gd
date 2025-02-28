@@ -17,3 +17,7 @@ func resume_game():
 func next_level(new_level):
 	get_tree().change_scene_to_file(new_level)
 	level_changed.emit() #This will be used later to set health back to 100 when player reaches new level
+func restore_player_parameters():
+	HealthManager.fill_health()
+	StaminaManager.fill_stamina()
+	ChakraManager.fill_chakra()

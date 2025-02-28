@@ -10,7 +10,6 @@ func take_damage(amount: int):
 	current_health -= amount
 	if current_health < 0:
 		current_health = 0
-		print("game_over")
 	health_changed.emit()
 #Heals the player
 func heal(amount: int):
@@ -18,3 +17,5 @@ func heal(amount: int):
 	if current_health >= max_health:
 		current_health = max_health
 	health_changed.emit()
+func fill_health():
+	current_health = max_health

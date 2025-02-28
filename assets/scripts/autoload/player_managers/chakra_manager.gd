@@ -20,3 +20,5 @@ func regenerate_chakra():
 	if current_chakra > max_chakra:
 		current_chakra = max_chakra
 	chakra_changed.emit()
+func fill_chakra():
+	current_chakra = max_chakra

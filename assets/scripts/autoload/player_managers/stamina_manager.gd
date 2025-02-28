@@ -25,3 +25,5 @@ func recover_stamina(multiplier: float):
 		stamina_depleated = false
 		stamina_recover_allowed = false
 	stamina_changed.emit()
+func fill_stamina():
+	current_stamina = max_stamina

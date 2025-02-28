@@ -5,6 +5,8 @@ func _ready():
 	max_value = ChakraManager.max_chakra
 	#Connecting signal that is emmited from the ChakraManager
 	ChakraManager.chakra_changed.connect(update_chakra)
+	await get_tree().create_timer(0.001).timeout
+	update_chakra()
 func update_chakra():
 	#ChakraBar update
 	value = round(ChakraManager.current_chakra)

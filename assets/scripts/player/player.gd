@@ -18,7 +18,6 @@ class_name Player
 @onready var attack_anim_finished = true;
 @onready var chakra_anim_finished = false;
 
-@onready var area_counter: int = 0
 @onready var area_list: Array
 func _ready():
 	$KatanaDamageBox/CollisionShape2D.disabled = true
@@ -27,8 +26,8 @@ func _ready():
 func _physics_process(delta):
 	move_and_slide()
 	player_physics(delta)
-	if area_counter >= 2:
-		print(get_nearest_area())
+	if !area_list.is_empty():
+		InteractionManager.nearest_area_active.emit(get_nearest_area())
 func _input(event):
 	if event.is_action_released("regenerate_chakra"):
 		chakra_anim_finished = false
@@ -178,21 +177,20 @@ func _on_katana_damage_box_area_entered(area):
 
 
 func _on_player_interaction_area_area_entered(area):
-	area_counter += 1
 	if area not in area_list:
 		area_list.append(area)
 func _on_player_interaction_area_area_exited(area):
-	area_counter -= 1
 	area_list.erase(area)
 func get_nearest_area() -> Node:
-	var area1 = get_distance_to_area(area_list[0])
-	var area2 = get_distance_to_area(area_list[1])
-	var nearest_area: Node
-	if area1 >= area2:
-		nearest_area = area_list[0]
-	else:
-		nearest_area = area_list[1]
+	var closest_area: float = get_distance_to_area(area_list[0])
+	var nearest_area: Node = area_list[0]
+	if area_list.size() > 1:
+		for area in area_list:
+			var area_distance = get_distance_to_area(area)
+			if area_distance <= closest_area:
+				closest_area = area_distance
+				nearest_area = area
 	return nearest_area
-func get_distance_to_area(area):
-	return self.position.distance_to(area.position)
+func get_distance_to_area(area) -> float:
+	return self.global_position.distance_to(area.global_position)
 	

@@ -26,6 +26,7 @@ AbilityManager="*res://assets/scripts/autoload/player_managers/ability_manager.g
 LevelManager="*res://assets/scripts/autoload/level_manager.gd"
 DirectionManager="*res://assets/scripts/autoload/player_managers/direction_manager.gd"
 DialogManager="*res://assets/scripts/autoload/player_managers/dialog_manager.gd"
+InteractionManager="*res://assets/scripts/autoload/player_managers/interaction_manager.gd"
 
 [display]
 

@@ -244,7 +244,7 @@ sources/0 = SubResource("TileSetAtlasSource_ayj06")
 size = Vector2(35, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
-size = Vector2(12.3269, 92.9673)
+size = Vector2(12.0574, 92.9673)
 
 [node name="TutorialLevelDojo" type="Node2D"]
 script = ExtResource("1_ow8p2")
@@ -272,7 +272,7 @@ layer_2/z_index = 5
 layer_2/tile_data = PackedInt32Array(655357, 131072, 6, 655356, 0, 7, 589821, 327680, 6, 524285, 327680, 6, 458749, 327680, 6, 393213, 327680, 6, 327677, 327680, 6, 262141, 327680, 6, 196605, 327680, 6, 131069, 327680, 6, 65533, 327680, 6, 589820, 196608, 6, 524284, 196608, 6, 458748, 196608, 6, 393212, 196608, 6, 327676, 196608, 6, 262140, 196608, 6, 196604, 196608, 6, 131068, 196608, 6, 65532, 196608, 6, 589855, 131072, 7, 589854, 0, 5, 524318, 196608, 6, 458782, 196608, 6, 393246, 196608, 6, 327710, 196608, 6, 262174, 196608, 6, 196638, 196608, 6, 131102, 196608, 6, 65566, 196608, 6, 30, 196608, 6, 524319, 327680, 6, 458783, 327680, 6, 393247, 327680, 6, 327711, 327680, 6, 262175, 327680, 6, 196639, 327680, 6, 131103, 327680, 6, 65567, 327680, 6, 31, 327680, 6)
 
 [node name="TrainingDummy" parent="TileMap" instance=ExtResource("5_6g855")]
-z_index = 10
+z_index = 1
 position = Vector2(456, 256)
 
 [node name="MrTuto" parent="TileMap" instance=ExtResource("3_r42wm")]
@@ -302,16 +302,18 @@ scale = Vector2(1, 0.9)
 texture = ExtResource("5_ijjyi")
 
 [node name="NextLevelArea" parent="TileMap/DojoDoor" node_paths=PackedStringArray("interact_button_guide") instance=ExtResource("8_mq6qp")]
+position = Vector2(0, -1.1111)
 next_level = "res://assets/scenes/levels/tutorial_level_garden.tscn"
 interact_button_guide = NodePath("../InteractButtonGuide")
 
 [node name="CollisionShape2D" parent="TileMap/DojoDoor/NextLevelArea" index="0"]
-position = Vector2(-101, 0.434814)
+position = Vector2(-100.7, 0)
 rotation = -3.14159
 scale = Vector2(6.68475, -1.89771)
 shape = SubResource("RectangleShape2D_f1ja3")
 
 [node name="InteractButtonGuide" parent="TileMap/DojoDoor" instance=ExtResource("9_qygfe")]
+visible = false
 offset_left = -112.0
 offset_top = -112.222
 offset_right = -96.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4ciqryd2upsb"]
+[gd_scene load_steps=13 format=3 uid="uid://d4ciqryd2upsb"]
 
+[ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/garden/tutorial_level_garden.gd" id="1_e7dyp"]
 [ext_resource type="Texture2D" uid="uid://dojqhoag8tcwy" path="res://assets/art/levels/tutorial_level/garden/tileset/garden_tileset.png" id="1_tjfjw"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="2_vag8a"]
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="3_fnrhv"]
@@ -150,6 +151,7 @@ sources/0 = SubResource("TileSetAtlasSource_wghjj")
 size = Vector2(35, 81)
 
 [node name="TutorialLevelGarden" type="Node2D"]
+script = ExtResource("1_e7dyp")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ar8ja")

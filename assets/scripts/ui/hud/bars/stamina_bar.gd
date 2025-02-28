@@ -6,6 +6,9 @@ func _ready():
 	max_value = StaminaManager.max_stamina
 	#Connecting signal from StaminaManager to this node and assigning update_stamina method to it.
 	StaminaManager.stamina_changed.connect(update_stamina)
+	#Updates stamina when e.g. level changes so it won't stay on updated
+	await get_tree().create_timer(0.001).timeout
+	update_stamina()
 #Updates hud stamina bar and it's label
 func update_stamina():
 	#StaminaBar update
