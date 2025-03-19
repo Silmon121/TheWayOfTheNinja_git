@@ -66,11 +66,19 @@ func player_physics(delta):
 						walk(delta)
 				else:
 					idle()
-				if Input.is_action_just_pressed("jump") and StaminaManager.current_stamina >= 10 and StaminaManager.stamina_depleated == false:
-					jump()
+				if Input.is_action_just_pressed("jump"):
+					if Input.is_action_pressed("down"):
+						set_collision_mask_value(9,false)
+					else:
+						if StaminaManager.current_stamina >= 10 and StaminaManager.stamina_depleated == false:
+							jump()
 			
 	#Player is in the air
 	else:
+		if Input.is_action_pressed("down"):
+			set_collision_mask_value(9,false)
+		else:
+			set_collision_mask_value(9,true)
 		fall(delta)
 #CUSTOM MADE METHODS
 #MOVEMENT METHODS

@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="4_h6plk"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_vgfj6"]
 [ext_resource type="PackedScene" uid="uid://c2hv1hesjbdxb" path="res://assets/scenes/npcs/training_dummy.tscn" id="5_6g855"]
-[ext_resource type="AudioStream" uid="uid://bxaayt415yxq" path="res://assets/audio/music/dojo.wav" id="6_2lqry"]
 [ext_resource type="Texture2D" uid="uid://dbaox3fimtup6" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door_anim.png" id="7_grk7w"]
 [ext_resource type="Texture2D" uid="uid://bns361qinapt2" path="res://assets/art/levels/tutorial_level/dojo/sprites/weapon_rack.png" id="8_520b4"]
 [ext_resource type="PackedScene" uid="uid://bb776lvmqtc3w" path="res://assets/scenes/areas/next_level_area.tscn" id="8_mq6qp"]
 [ext_resource type="PackedScene" uid="uid://dwi6qecowb77q" path="res://assets/scenes/ui/hud/interact_button_guide.tscn" id="9_qygfe"]
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="11_xargs"]
-[ext_resource type="PackedScene" path="res://assets/scenes/ui/quests/tutorial_quest.tscn" id="14_fvl0b"]
+[ext_resource type="AudioStream" uid="uid://bxaayt415yxq" path="res://assets/audio/music/the_way.wav" id="13_yqn63"]
+[ext_resource type="PackedScene" uid="uid://dcxd6uqu3qx0g" path="res://assets/scenes/ui/quests/tutorial_quest.tscn" id="14_fvl0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayj06"]
 texture = ExtResource("1_fu15l")
@@ -403,6 +403,12 @@ drag_bottom_margin = 0.55
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="DojoAudioPlayer" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+position = Vector2(-103, -248)
+stream = ExtResource("13_yqn63")
+autoplay = true
+
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="Hud" instance=ExtResource("4_vgfj6")]
@@ -410,11 +416,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="Hud" instance=ExtResource("11_xargs")]
 visible = false
-
-[node name="DojoAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("6_2lqry")
-autoplay = true
 
 [node name="TutorialQuest" parent="." node_paths=PackedStringArray("dialog_area") instance=ExtResource("14_fvl0b")]
 dialog_area = NodePath("../TileMap/MrTuto/DialogAreaMrTuto2")

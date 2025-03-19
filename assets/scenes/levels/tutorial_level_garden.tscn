@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="3_q1qgy"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_wsapu"]
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="5_1tx7u"]
-[ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/tranquil_breeze.wav" id="6_0b701"]
 [ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="8_flt6q"]
-[ext_resource type="PackedScene" path="res://assets/scenes/npcs/enemies/ninja_spirit.tscn" id="11_a0ul0"]
+[ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/fresh_start.wav" id="9_xtwcb"]
+[ext_resource type="PackedScene" uid="uid://exsgebvyqmcv" path="res://assets/scenes/npcs/enemies/ninja_spirit.tscn" id="11_a0ul0"]
 [ext_resource type="PackedScene" uid="uid://41v8fo3srdge" path="res://assets/scenes/ui/quests/garden_quest.tscn" id="12_ayx26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wghjj"]
@@ -280,14 +280,18 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_ar8ja"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 1
+physics_layer_1/collision_layer = 256
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_wghjj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6can"]
 size = Vector2(35, 81)
 
-[node name="TutorialLevelGarden" type="Node2D"]
+[node name="TutorialLevelGarden" type="Node2D" node_paths=PackedStringArray("garden_quest")]
 script = ExtResource("1_e7dyp")
+dialog_key = "quest1"
+character = "mr_tuto"
+garden_quest = NodePath("GardenQuest")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_mnr4d")]
 
@@ -303,7 +307,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(655348, 196608, 4, 655349, 262144, 4, 655350, 196608, 4, 655351, 262144, 4, 655352, 196608, 4, 655353, 262144, 4, 655354, 196608, 4, 655355, 262144, 4, 655356, 196608, 4, 655357, 262144, 4, 655358, 196608, 4, 655359, 262144, 4, 589824, 196608, 4, 589825, 262144, 4, 589826, 196608, 4, 589827, 262144, 4, 589828, 196608, 4, 589829, 262144, 4, 589830, 196608, 4, 589831, 262144, 4, 589832, 196608, 4, 589833, 262144, 4, 589834, 196608, 4, 589835, 262144, 4, 589836, 196608, 4, 589837, 262144, 4, 589838, 196608, 4, 589839, 262144, 4, 589840, 196608, 4, 589841, 262144, 4, 589842, 196608, 4, 589843, 262144, 4, 589844, 196608, 4, 589845, 262144, 4, 589846, 196608, 4, 589847, 262144, 4, 589848, 196608, 4, 589849, 262144, 4, 589850, 196608, 4, 589851, 262144, 4, 589852, 196608, 4, 589853, 262144, 4, 589854, 196608, 4, 589812, 196608, 4, 524276, 196608, 4, 458740, 196608, 4, 393204, 196608, 4, 327668, 196608, 4, 262132, 196608, 4, 196596, 196608, 4, 131060, 196608, 4, 65524, 196608, 4, 589855, 196608, 4, 589856, 262144, 4, 589857, 196608, 4, 589858, 262144, 4, 589859, 196608, 4, 589860, 262144, 4, 589861, 196608, 4, 589862, 262144, 4, 589863, 196608, 4, 589864, 262144, 4, 589865, 196608, 4, 589866, 262144, 4, 589867, 196608, 4, 589868, 262144, 4, 589869, 196608, 4, 589870, 262144, 4, 589871, 196608, 4, 589872, 262144, 4, 589873, 196608, 4, 589874, 262144, 4, 589875, 196608, 4, 589876, 262144, 4, 589877, 196608, 4, 589878, 262144, 4, 589879, 196608, 4, 589880, 196608, 4, 458787, 589824, 3, 458788, 655360, 3, 458789, 720896, 3, 458790, 786432, 3, 524323, 589824, 4, 524324, 655360, 4, 524325, 720896, 4, 524326, 786432, 4, 589881, 262144, 4, 589882, 196608, 4, 589883, 262144, 4, 458803, 589824, 3, 524339, 589824, 4, 458804, 655360, 3, 524340, 655360, 4, 458805, 720896, 3, 524341, 720896, 4, 458806, 786432, 3, 524342, 786432, 4, 458795, 589824, 3, 524331, 589824, 4, 458796, 655360, 3, 524332, 655360, 4, 458797, 720896, 3, 524333, 720896, 4, 458798, 786432, 3, 524334, 786432, 4, 327723, 589824, 3, 393259, 589824, 4, 327724, 655360, 3, 393260, 655360, 4, 327725, 720896, 3, 393261, 720896, 4, 327726, 786432, 3, 393262, 786432, 4)
+layer_1/tile_data = PackedInt32Array(655348, 196608, 4, 655349, 262144, 4, 655350, 196608, 4, 655351, 262144, 4, 655352, 196608, 4, 655353, 262144, 4, 655354, 196608, 4, 655355, 262144, 4, 655356, 196608, 4, 655357, 262144, 4, 655358, 196608, 4, 655359, 262144, 4, 589824, 196608, 4, 589825, 262144, 4, 589826, 196608, 4, 589827, 262144, 4, 589828, 196608, 4, 589829, 262144, 4, 589830, 196608, 4, 589831, 262144, 4, 589832, 196608, 4, 589833, 262144, 4, 589834, 196608, 4, 589835, 262144, 4, 589836, 196608, 4, 589837, 262144, 4, 589838, 196608, 4, 589839, 262144, 4, 589840, 196608, 4, 589841, 262144, 4, 589842, 196608, 4, 589843, 262144, 4, 589844, 196608, 4, 589845, 262144, 4, 589846, 196608, 4, 589847, 262144, 4, 589848, 196608, 4, 589849, 262144, 4, 589850, 196608, 4, 589851, 262144, 4, 589852, 196608, 4, 589853, 262144, 4, 589854, 196608, 4, 589812, 196608, 4, 524276, 196608, 4, 458740, 196608, 4, 393204, 196608, 4, 327668, 196608, 4, 262132, 196608, 4, 196596, 196608, 4, 131060, 196608, 4, 65524, 196608, 4, 589855, 196608, 4, 589856, 262144, 4, 589857, 196608, 4, 589858, 262144, 4, 589859, 196608, 4, 589860, 262144, 4, 589861, 196608, 4, 589862, 262144, 4, 589863, 196608, 4, 589864, 262144, 4, 589865, 196608, 4, 589866, 262144, 4, 589867, 196608, 4, 589868, 262144, 4, 589869, 196608, 4, 589870, 262144, 4, 589871, 196608, 4, 589872, 262144, 4, 589873, 196608, 4, 589874, 262144, 4, 589875, 196608, 4, 589876, 262144, 4, 589877, 196608, 4, 589878, 262144, 4, 589879, 196608, 4, 589880, 196608, 4, 524323, 589824, 4, 524324, 655360, 4, 524325, 720896, 4, 524326, 786432, 4, 589881, 262144, 4, 589882, 196608, 4, 589883, 262144, 4, 458803, 589824, 3, 524339, 589824, 4, 458804, 655360, 3, 524340, 655360, 4, 458805, 720896, 3, 524341, 720896, 4, 458806, 786432, 3, 524342, 786432, 4, 458795, 589824, 3, 524331, 589824, 4, 458796, 655360, 3, 524332, 655360, 4, 458797, 720896, 3, 524333, 720896, 4, 458798, 786432, 3, 524334, 786432, 4, 327723, 589824, 3, 393259, 589824, 4, 327724, 655360, 3, 393260, 655360, 4, 327725, 720896, 3, 393261, 720896, 4, 327726, 786432, 3, 393262, 786432, 4, 589884, 196608, 4, 524348, 196608, 4, 458812, 196608, 4, 393276, 196608, 4, 327740, 196608, 4, 262204, 196608, 4, 196668, 196608, 4, 131132, 196608, 4, 65596, 196608, 4, 60, 196608, 4, 393251, 589824, 3, 393252, 655360, 3, 393253, 720896, 3, 393254, 786432, 3, 458787, 589824, 3, 458790, 786432, 3, 458788, 655360, 3, 458789, 655360, 3, 393267, 589824, 3, 393269, 720896, 3, 393268, 655360, 3, 393270, 786432, 3, 458784, 589824, 3, 458793, 786432, 3, 524329, 786432, 4, 524320, 589824, 4, 458785, 655360, 3, 458792, 720896, 3, 458786, 655360, 3, 458791, 655360, 3, 458801, 589824, 3, 458808, 786432, 3, 458807, 720896, 3, 458802, 720896, 3, 524337, 589824, 4, 524344, 786432, 4)
 layer_2/name = "FG"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -317,7 +321,7 @@ position = Vector2(661, 250)
 
 [node name="DialogAreaMrTuto2" parent="TileMap/MrTuto" node_paths=PackedStringArray("npc") instance=ExtResource("3_fnrhv")]
 npc = NodePath("..")
-dialog_key = "start"
+dialog_key = "quest1"
 character = "mr_tuto"
 
 [node name="CollisionShape2D" parent="TileMap/MrTuto/DialogAreaMrTuto2" index="0"]
@@ -335,17 +339,18 @@ limit_bottom = 320
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="GardenAudioPlayer" type="AudioStreamPlayer2D" parent="Player"]
+process_mode = 3
+position = Vector2(-450, -254)
+stream = ExtResource("9_xtwcb")
+autoplay = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_wsapu")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_q1qgy")]
 visible = false
-
-[node name="GardenAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("6_0b701")
-autoplay = true
 
 [node name="DojoDoor" type="Sprite2D" parent="."]
 position = Vector2(304, 207)
