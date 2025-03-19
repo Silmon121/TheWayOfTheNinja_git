@@ -1,18 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://exsgebvyqmcv"]
+[gd_scene load_steps=6 format=3 uid="uid://4abf8um8cifi"]
 
 [ext_resource type="Texture2D" uid="uid://dm5yoj6w0t6b6" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_idle.png" id="1_05rgy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hdqy"]
-size = Vector2(33, 84)
+[sub_resource type="Curve2D" id="Curve2D_dtmv8"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks3hh"]
+atlas = ExtResource("1_05rgy")
+region = Rect2(0, 0, 36, 90)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifqge"]
+atlas = ExtResource("1_05rgy")
+region = Rect2(0, 90, 36, 90)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_05rgy")
-vframes = 2
+[sub_resource type="SpriteFrames" id="SpriteFrames_bd7cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks3hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifqge")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 3)
-shape = SubResource("RectangleShape2D_8hdqy")
+[node name="NinjaSpirit" type="Path2D"]
+curve = SubResource("Curve2D_dtmv8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="NinjaSpirit" type="Node2D" parent="PathFollow2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D/NinjaSpirit"]
+sprite_frames = SubResource("SpriteFrames_bd7cp")
+animation = &"idle"
