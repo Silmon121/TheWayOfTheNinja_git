@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4ciqryd2upsb"]
+[gd_scene load_steps=15 format=3 uid="uid://d4ciqryd2upsb"]
 
 [ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/garden/tutorial_level_garden.gd" id="1_e7dyp"]
 [ext_resource type="PackedScene" uid="uid://dp8qp4eva1mku" path="res://assets/scenes/levels/garden/garden_parallax_bg.tscn" id="2_mnr4d"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="5_1tx7u"]
 [ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="8_flt6q"]
 [ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/fresh_start.wav" id="9_xtwcb"]
-[ext_resource type="PackedScene" uid="uid://exsgebvyqmcv" path="res://assets/scenes/npcs/enemies/ninja_spirit.tscn" id="11_a0ul0"]
 [ext_resource type="PackedScene" uid="uid://41v8fo3srdge" path="res://assets/scenes/ui/quests/garden_quest.tscn" id="12_ayx26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wghjj"]
@@ -356,9 +355,6 @@ visible = false
 position = Vector2(304, 207)
 scale = Vector2(1, 0.9)
 texture = ExtResource("8_flt6q")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("11_a0ul0")]
-position = Vector2(1036, 92)
 
 [node name="GardenQuest" parent="." node_paths=PackedStringArray("dialog_area") instance=ExtResource("12_ayx26")]
 dialog_area = NodePath("../TileMap/MrTuto/DialogAreaMrTuto2")
