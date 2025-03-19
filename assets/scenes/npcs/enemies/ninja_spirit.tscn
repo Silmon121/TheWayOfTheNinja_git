@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://exsgebvyqmcv"]
+
+[ext_resource type="Texture2D" uid="uid://dm5yoj6w0t6b6" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_idle.png" id="1_05rgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hdqy"]
+size = Vector2(33, 84)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_05rgy")
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_8hdqy")

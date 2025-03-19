@@ -26,7 +26,7 @@ func _ready():
 func _physics_process(delta):
 	move_and_slide()
 	player_physics(delta)
-	if !area_list.is_empty():
+	if !area_list.is_empty() and is_on_floor():
 		InteractionManager.nearest_area_active.emit(get_nearest_area())
 func _input(event):
 	if event.is_action_released("regenerate_chakra"):
@@ -172,10 +172,11 @@ func _on_animation_player_animation_finished(anim_name):
 		chakra_anim_finished = true
 #When katana will hit an enemy
 func _on_katana_damage_box_area_entered(area):
+	DamageNumbers.player_attacked_enemy = true
 	if area.is_in_group("enemy"):
 		DamageNumbers.displayNumber(25,area.global_position)
-
-
+	await get_tree().create_timer(0.1).timeout
+	DamageNumbers.player_attacked_enemy = false
 func _on_player_interaction_area_area_entered(area):
 	if area not in area_list:
 		area_list.append(area)

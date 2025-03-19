@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b12ojrm7k1cwu"]
+[gd_scene load_steps=28 format=3 uid="uid://b12ojrm7k1cwu"]
 
 [ext_resource type="Texture2D" uid="uid://cb5ebl814ojfa" path="res://assets/art/levels/tutorial_level/dojo/tileset/dojo_tileset.png" id="1_fu15l"]
 [ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/dojo/tutorial_level_dojo.gd" id="1_ow8p2"]
@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="4_h6plk"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_vgfj6"]
 [ext_resource type="PackedScene" uid="uid://c2hv1hesjbdxb" path="res://assets/scenes/npcs/training_dummy.tscn" id="5_6g855"]
-[ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="5_ijjyi"]
-[ext_resource type="AudioStream" uid="uid://casc0uxi4dbq0" path="res://assets/audio/music/dojo.wav" id="6_2lqry"]
+[ext_resource type="AudioStream" uid="uid://bxaayt415yxq" path="res://assets/audio/music/dojo.wav" id="6_2lqry"]
+[ext_resource type="Texture2D" uid="uid://dbaox3fimtup6" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door_anim.png" id="7_grk7w"]
 [ext_resource type="Texture2D" uid="uid://bns361qinapt2" path="res://assets/art/levels/tutorial_level/dojo/sprites/weapon_rack.png" id="8_520b4"]
 [ext_resource type="PackedScene" uid="uid://bb776lvmqtc3w" path="res://assets/scenes/areas/next_level_area.tscn" id="8_mq6qp"]
 [ext_resource type="PackedScene" uid="uid://dwi6qecowb77q" path="res://assets/scenes/ui/hud/interact_button_guide.tscn" id="9_qygfe"]
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="11_xargs"]
+[ext_resource type="PackedScene" uid="uid://dcxd6uqu3qx0g" path="res://assets/scenes/ui/quests/tutorial_quest.tscn" id="14_fvl0b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayj06"]
 texture = ExtResource("1_fu15l")
@@ -243,11 +244,78 @@ sources/0 = SubResource("TileSetAtlasSource_ayj06")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gk1v"]
 size = Vector2(35, 81)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
-size = Vector2(12.0574, 92.9673)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3b5s"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(0, 0, 288, 180)
 
-[node name="TutorialLevelDojo" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f4rh"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(288, 0, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3bct"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(0, 180, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82w0q"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(288, 180, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nskhl"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(0, 360, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jtc6"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(288, 360, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uisq6"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(0, 540, 288, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8sdt"]
+atlas = ExtResource("7_grk7w")
+region = Rect2(288, 540, 288, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pb2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3b5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f4rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3bct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82w0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nskhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jtc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uisq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8sdt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
+size = Vector2(12.7154, 105.39)
+
+[node name="TutorialLevelDojo" type="Node2D" node_paths=PackedStringArray("tutorial_quest")]
 script = ExtResource("1_ow8p2")
+dialog_key = "quest1"
+character = "mr_tuto"
+tutorial_quest = NodePath("TutorialQuest")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lsfon")
@@ -281,11 +349,11 @@ position = Vector2(280, 248)
 [node name="DialogAreaMrTuto2" parent="TileMap/MrTuto" node_paths=PackedStringArray("npc") instance=ExtResource("4_h6plk")]
 scale = Vector2(0.996473, 0.996362)
 npc = NodePath("..")
-dialog_key = "start"
+dialog_key = "quest1"
 character = "mr_tuto"
 
 [node name="CollisionShape2D" parent="TileMap/MrTuto/DialogAreaMrTuto2" index="0"]
-position = Vector2(0.5, 4.5)
+position = Vector2(3.05176e-05, 2.00729)
 shape = SubResource("RectangleShape2D_8gk1v")
 
 [node name="WeaponRack" type="Sprite2D" parent="TileMap"]
@@ -296,28 +364,28 @@ texture = ExtResource("8_520b4")
 position = Vector2(704, 256)
 texture = ExtResource("8_520b4")
 
-[node name="DojoDoor" type="Sprite2D" parent="TileMap"]
+[node name="Door" type="AnimatedSprite2D" parent="TileMap"]
+unique_name_in_owner = true
 position = Vector2(464, 207)
 scale = Vector2(1, 0.9)
-texture = ExtResource("5_ijjyi")
+sprite_frames = SubResource("SpriteFrames_6pb2t")
 
-[node name="NextLevelArea" parent="TileMap/DojoDoor" node_paths=PackedStringArray("interact_button_guide") instance=ExtResource("8_mq6qp")]
-position = Vector2(0, -1.1111)
+[node name="NextLevelArea" parent="TileMap/Door" node_paths=PackedStringArray("interact_button_guide") instance=ExtResource("8_mq6qp")]
+scale = Vector2(1, 0.9)
 next_level = "res://assets/scenes/levels/tutorial_level_garden.tscn"
 interact_button_guide = NodePath("../InteractButtonGuide")
 
-[node name="CollisionShape2D" parent="TileMap/DojoDoor/NextLevelArea" index="0"]
-position = Vector2(-100.7, 0)
+[node name="CollisionShape2D" parent="TileMap/Door/NextLevelArea" index="0"]
+position = Vector2(-101.5, 6.10352e-05)
 rotation = -3.14159
 scale = Vector2(6.68475, -1.89771)
 shape = SubResource("RectangleShape2D_f1ja3")
 
-[node name="InteractButtonGuide" parent="TileMap/DojoDoor" instance=ExtResource("9_qygfe")]
-visible = false
-offset_left = -112.0
-offset_top = -112.222
-offset_right = -96.0
-offset_bottom = -96.2222
+[node name="InteractButtonGuide" parent="TileMap/Door" instance=ExtResource("9_qygfe")]
+offset_left = -109.0
+offset_top = -114.444
+offset_right = -93.0
+offset_bottom = -98.4445
 
 [node name="Player" parent="." instance=ExtResource("2_sjk47")]
 position = Vector2(103, 248)
@@ -335,12 +403,12 @@ drag_bottom_margin = 0.55
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="Hud" parent="UI" instance=ExtResource("4_vgfj6")]
+[node name="Hud" parent="Hud" instance=ExtResource("4_vgfj6")]
 metadata/_edit_use_anchors_ = true
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("11_xargs")]
+[node name="PauseMenu" parent="Hud" instance=ExtResource("11_xargs")]
 visible = false
 
 [node name="DojoAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -348,5 +416,9 @@ process_mode = 3
 stream = ExtResource("6_2lqry")
 autoplay = true
 
+[node name="TutorialQuest" parent="." node_paths=PackedStringArray("dialog_area") instance=ExtResource("14_fvl0b")]
+dialog_area = NodePath("../TileMap/MrTuto/DialogAreaMrTuto2")
+quest_name = "The beginning"
+
 [editable path="TileMap/MrTuto/DialogAreaMrTuto2"]
-[editable path="TileMap/DojoDoor/NextLevelArea"]
+[editable path="TileMap/Door/NextLevelArea"]

@@ -3,11 +3,12 @@ extends Node
 var main_node: Node
 
 signal level_changed
-func get_current_scene():
+func get_current_scene() -> Node:
 	#This will get the scene where player currently is
 	#In the root there are autoloads first as it's children, but main node e.g Dojo is always last so I am using last index of roots children to get the e.g Dojo node.
 	#I can use current_scene for creating new objects.
 	main_node = get_tree().get_root().get_child(-1)
+	return main_node
 func exit_game():
 	get_tree().quit()
 func pause_game():

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/ui/menus/settings.gd" id="1_amaqj"]
 [ext_resource type="Texture2D" uid="uid://dgb7rugkmitm7" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="1_j1v34"]
-[ext_resource type="AudioStream" uid="uid://8022m231oyov" path="res://assets/audio/music/journey_begins.wav" id="3_jwp3f"]
+[ext_resource type="AudioStream" uid="uid://eh3ff5ewbsgq" path="res://assets/audio/music/the_journey_begins.wav" id="2_a4y6q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_symwc"]
 font_size = 20
@@ -73,7 +73,7 @@ popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_jwp3f")
+stream = ExtResource("2_a4y6q")
 autoplay = true
 
 [node name="Button" type="Button" parent="."]

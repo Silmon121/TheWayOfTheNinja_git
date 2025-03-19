@@ -1,0 +1,41 @@
+{
+    "quest1":[
+        "Walk (A or D)",
+        "Go to mr. Tuto."
+    ],
+    "quest2":[
+        "Press E to talk to mr. Tuto"
+    ],
+    "quest3":[
+        "Try running (Shift+A or Shift+D)",
+        "Talk to mr. Tuto"
+    ],
+    "quest4":[
+        "Jump! (space)",
+	    "Talk to mr.Tuto."
+    ],
+    "quest5":[
+	    "Attack the training dummy! (mouse1)",
+        "Talk to mr.Tuto."
+    ],
+    "quest6":[
+	    "Shoot kunai. (C)",
+	    "Talk to mr.Tuto."
+    ],
+    "quest7":[
+	    "Shoot shuriken. (S)",
+	    "Talk to mr.Tuto."
+    ],
+    "quest8":[
+	    "Shoot fireball. (W)",
+	    "Talk to mr.Tuto."
+    ],
+    "quest9":[
+	    "Regenerate chakra. (Hold Ctrl)",
+	    "Talk to mr.Tuto."
+    ],
+    "quest10":[
+	    "Go to the garden.",
+	    ""
+    ]
+}

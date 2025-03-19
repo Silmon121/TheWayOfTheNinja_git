@@ -10,7 +10,7 @@ func _ready():
 	dialog_box.visible = false #Hides the dialog box
 	DialogManager.display_dialog.connect(on_display_dialog)
 func _input(event):
-	if (event.is_action_pressed("attack") or event.is_action_pressed("interact")) and dialog_box.visible:
+	if event.is_action_pressed("interact") and dialog_box.visible:
 		next_line()
 func on_display_dialog(text_key, character):
 	if !DialogManager.dialog_in_process:
@@ -41,6 +41,5 @@ func finish():
 	LevelManager.resume_game()
 	for node in get_tree().get_nodes_in_group("animation"): #This will make animations 
 		node.process_mode = Node.PROCESS_MODE_INHERIT
-	await get_tree().create_timer(0.1).timeout #Waits some time before enabling the area, to prevent activating the dialog again.
-	DialogManager.dialog_ended.emit() #This is for the dialog area to enable again.
+	
 	

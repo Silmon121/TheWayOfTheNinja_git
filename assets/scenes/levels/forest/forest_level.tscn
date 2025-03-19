@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciaxmv5b762j1"]
+
+[ext_resource type="Texture2D" uid="uid://j4wxnhoaa5p3" path="res://assets/art/levels/forest_level/tileset/forest_level_tileset.png" id="1_200u7"]
+[ext_resource type="PackedScene" uid="uid://dui4s8xnsfbir" path="res://assets/scenes/levels/forest/forest_parallax_bg.tscn" id="2_eitcc"]
+[ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="3_mi3lu"]
+[ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="4_j6kjj"]
+[ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="5_cfj02"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jair4"]
+texture = ExtResource("1_200u7")
+texture_region_size = Vector2i(32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.33333, 16, -5.33333, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_o6wba"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jair4")
+
+[node name="ForestLevel" type="Node2D"]
+
+[node name="ForestParallaxBg" parent="." instance=ExtResource("2_eitcc")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_o6wba")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(589824, 0, 2, 589825, 0, 2, 589826, 0, 2, 589827, 0, 2, 589828, 0, 2, 589829, 0, 2, 589830, 0, 2, 589831, 0, 2, 589832, 0, 2, 589833, 0, 2, 589834, 0, 2, 589835, 0, 2, 589836, 0, 2, 589837, 0, 2, 589838, 0, 2, 589839, 0, 2, 589840, 0, 2, 589841, 0, 2, 589842, 0, 2, 589843, 0, 2, 589844, 0, 2, 589845, 0, 2, 589846, 0, 2, 589847, 0, 2, 589848, 0, 2, 589849, 0, 2, 589850, 0, 2, 589851, 0, 2, 589852, 0, 2, 589853, 0, 2, 589854, 0, 2, 589855, 0, 2, 589856, 0, 2, 589857, 0, 2, 589858, 0, 2, 589859, 0, 2, 589860, 0, 2, 589861, 0, 2, 589862, 0, 2, 589863, 0, 2, 589864, 0, 2, 589865, 0, 2, 589866, 0, 2, 589867, 0, 2, 589868, 0, 2, 589869, 0, 2, 589870, 0, 2, 589871, 0, 2, 589872, 0, 2, 589873, 0, 2, 589874, 0, 2)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="Hud" instance=ExtResource("3_mi3lu")]
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="Hud" instance=ExtResource("4_j6kjj")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("5_cfj02")]
+position = Vector2(49, 250)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 1632
+limit_bottom = 320
+limit_smoothed = true
+drag_left_margin = 0.55
+drag_top_margin = 0.55
+drag_right_margin = 0.55
+drag_bottom_margin = 0.55
+editor_draw_limits = true
+editor_draw_drag_margin = true

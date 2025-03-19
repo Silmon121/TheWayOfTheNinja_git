@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dui4s8xnsfbir"]
+
+[ext_resource type="Texture2D" uid="uid://cd2weqkpr01jn" path="res://assets/art/levels/forest_level/bg/forest_trees_behind_bg.png" id="1_daavw"]
+[ext_resource type="Texture2D" uid="uid://bnw5lyuqlhu10" path="res://assets/art/levels/forest_level/bg/forest_trees_bg.png" id="1_q64uw"]
+
+[node name="ForestParallaxBg" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_daavw")
+centered = false
+
+[node name="trees" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="trees"]
+texture = ExtResource("1_q64uw")
+centered = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5c3jw6j5v2mx"]
+[gd_scene load_steps=27 format=3 uid="uid://b5c3jw6j5v2mx"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/hud.gd" id="1_65hfs"]
 [ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://assets/art/ui/hud/bars/bar_frame.png" id="1_fu162"]
@@ -16,6 +16,14 @@
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/fireball_action_button.gd" id="13_rqpbe"]
 [ext_resource type="Texture2D" uid="uid://bk0ypdkd6maun" path="res://assets/art/ui/hud/action_buttons/shuriken_cooldown_frame.png" id="13_xb00w"]
 [ext_resource type="Texture2D" uid="uid://cts5vl4514w5k" path="res://assets/art/ui/hud/dialogue/dialogue_box.png" id="16_bhr1p"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/quest_system.gd" id="17_q8f2f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7d61"]
+line_spacing = 0.0
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvsn1"]
+font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_erq21"]
 font_size = 6
@@ -29,18 +37,14 @@ font_size = 5
 [sub_resource type="LabelSettings" id="LabelSettings_aftj3"]
 font_size = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_g7d61"]
-line_spacing = 0.0
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_cvsn1"]
-font_size = 10
-
 [sub_resource type="LabelSettings" id="LabelSettings_ns5mm"]
 font_size = 12
 
+[sub_resource type="LabelSettings" id="LabelSettings_hvcos"]
+font_size = 10
+
 [sub_resource type="LabelSettings" id="LabelSettings_p7v8c"]
-font_size = 8
+font_size = 9
 
 [node name="Hud" type="Control"]
 process_mode = 3
@@ -50,188 +54,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_65hfs")
-
-[node name="BarsCon" type="MarginContainer" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_right = 108.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon"]
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="HealthBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
-layout_mode = 2
-value = 100.0
-texture_under = ExtResource("1_fu162")
-texture_progress = ExtResource("2_kgjfl")
-script = ExtResource("4_f2cvy")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/HealthBar"]
-layout_mode = 0
-offset_right = 108.0
-offset_bottom = 12.0
-alignment = 1
-
-[node name="HPCounter" type="Label" parent="BarsCon/VBoxContainer/HealthBar/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StaminaBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
-layout_mode = 2
-value = 100.0
-texture_under = ExtResource("1_fu162")
-texture_progress = ExtResource("3_toukv")
-script = ExtResource("7_gu0f2")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/StaminaBar"]
-layout_mode = 0
-offset_right = 108.0
-offset_bottom = 12.0
-alignment = 1
-
-[node name="StaminaCounter" type="Label" parent="BarsCon/VBoxContainer/StaminaBar/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ChakraBar" type="TextureProgressBar" parent="BarsCon/VBoxContainer"]
-layout_mode = 2
-max_value = 80.0
-value = 80.0
-texture_under = ExtResource("1_fu162")
-texture_progress = ExtResource("4_ogum4")
-script = ExtResource("10_kjd66")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BarsCon/VBoxContainer/ChakraBar"]
-layout_mode = 0
-offset_right = 108.0
-offset_bottom = 12.0
-alignment = 1
-
-[node name="ChakraCounter" type="Label" parent="BarsCon/VBoxContainer/ChakraBar/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ActionButtonsCon" type="MarginContainer" parent="."]
-process_mode = 3
-layout_mode = 0
-offset_top = 39.0
-offset_right = 108.0
-offset_bottom = 75.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ActionButtonsCon"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="ActionButtonsCon/VBoxContainer"]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="ActionButtonsCon/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainerButtons" type="HBoxContainer" parent="ActionButtonsCon/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="VBoxContainerFireball" type="VBoxContainer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="FireballButton" type="TextureButton" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball"]
-layout_mode = 2
-texture_normal = ExtResource("5_de5kw")
-script = ExtResource("13_rqpbe")
-
-[node name="CDFill" type="TextureProgressBar" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton"]
-layout_mode = 0
-offset_right = 25.0
-offset_bottom = 25.0
-step = 0.01
-fill_mode = 5
-texture_progress = ExtResource("6_3kev8")
-tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
-
-[node name="FireballCDTimer" type="Timer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton"]
-unique_name_in_owner = true
-wait_time = 3.0
-one_shot = true
-
-[node name="FireballKeyGuide" type="Label" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball"]
-layout_mode = 2
-text = "W"
-label_settings = SubResource("LabelSettings_bodto")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainerKunai" type="VBoxContainer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="KunaiButton" type="TextureButton" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai"]
-layout_mode = 2
-texture_normal = ExtResource("11_vhkdw")
-script = ExtResource("11_ca2g5")
-
-[node name="CDFill" type="TextureProgressBar" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton"]
-layout_mode = 0
-offset_right = 25.0
-offset_bottom = 25.0
-step = 0.01
-fill_mode = 5
-texture_progress = ExtResource("6_3kev8")
-tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
-
-[node name="KunaiCDTimer" type="Timer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton"]
-unique_name_in_owner = true
-wait_time = 1.5
-one_shot = true
-
-[node name="KunaiKeyGuide" type="Label" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai"]
-layout_mode = 2
-text = "C"
-label_settings = SubResource("LabelSettings_2wyu3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainerShuriken" type="VBoxContainer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="ShurikenButton" type="TextureButton" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken"]
-layout_mode = 2
-texture_normal = ExtResource("13_xb00w")
-script = ExtResource("12_pwhf1")
-
-[node name="CDFill" type="TextureProgressBar" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton"]
-layout_mode = 0
-offset_right = 25.0
-offset_bottom = 25.0
-step = 0.01
-fill_mode = 5
-texture_progress = ExtResource("6_3kev8")
-tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
-
-[node name="ShurikenCDTimer" type="Timer" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="ShurikenKeyGuide" type="Label" parent="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken"]
-layout_mode = 2
-text = "S"
-label_settings = SubResource("LabelSettings_aftj3")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="DialogBoxCon" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -244,22 +66,24 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -125.0
-offset_top = -95.0
+offset_top = -50.0
 offset_right = 125.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_65hfs")
 
 [node name="Background" type="TextureRect" parent="DialogBoxCon"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("16_bhr1p")
+stretch_mode = 2
 
 [node name="DialogHeadLabel" type="Label" parent="DialogBoxCon/Background"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = -2.0
+offset_top = -1.0
 offset_right = 78.0
-offset_bottom = 21.0
+offset_bottom = 16.0
 text = "Mr. Tuto"
 label_settings = SubResource("LabelSettings_g7d61")
 vertical_alignment = 1
@@ -268,44 +92,238 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 3.0
-offset_top = 18.0
+offset_top = 16.0
 offset_right = 247.0
-offset_bottom = 92.0
-text = "test"
+offset_bottom = 46.0
+text = "TEST"
 label_settings = SubResource("LabelSettings_cvsn1")
 autowrap_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="BasicInfoContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 175.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="BarsCon" type="MarginContainer" parent="BasicInfoContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/BarsCon"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("2_kgjfl")
+script = ExtResource("4_f2cvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/HealthBar"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="HPCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/HealthBar/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaminaBar" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("3_toukv")
+script = ExtResource("7_gu0f2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/StaminaBar"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="StaminaCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/StaminaBar/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChakraBar" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer"]
+layout_mode = 2
+max_value = 80.0
+value = 80.0
+texture_under = ExtResource("1_fu162")
+texture_progress = ExtResource("4_ogum4")
+script = ExtResource("10_kjd66")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/ChakraBar"]
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 12.0
+alignment = 1
+
+[node name="ChakraCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/ChakraBar/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_erq21")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionButtonsCon" type="MarginContainer" parent="BasicInfoContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainerButtons" type="HBoxContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="VBoxContainerFireball" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="FireballButton" type="TextureButton" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball"]
+layout_mode = 2
+texture_normal = ExtResource("5_de5kw")
+script = ExtResource("13_rqpbe")
+
+[node name="CDFill" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+step = 0.01
+fill_mode = 5
+texture_progress = ExtResource("6_3kev8")
+tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
+
+[node name="FireballCDTimer" type="Timer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="FireballKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball"]
+layout_mode = 2
+text = "W"
+label_settings = SubResource("LabelSettings_bodto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainerKunai" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="KunaiButton" type="TextureButton" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai"]
+layout_mode = 2
+texture_normal = ExtResource("11_vhkdw")
+script = ExtResource("11_ca2g5")
+
+[node name="CDFill" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+step = 0.01
+fill_mode = 5
+texture_progress = ExtResource("6_3kev8")
+tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
+
+[node name="KunaiCDTimer" type="Timer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton"]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+
+[node name="KunaiKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai"]
+layout_mode = 2
+text = "C"
+label_settings = SubResource("LabelSettings_2wyu3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainerShuriken" type="VBoxContainer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ShurikenButton" type="TextureButton" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken"]
+layout_mode = 2
+texture_normal = ExtResource("13_xb00w")
+script = ExtResource("12_pwhf1")
+
+[node name="CDFill" type="TextureProgressBar" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton"]
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+step = 0.01
+fill_mode = 5
+texture_progress = ExtResource("6_3kev8")
+tint_progress = Color(0.0196078, 0.0196078, 0.0196078, 0.823529)
+
+[node name="ShurikenCDTimer" type="Timer" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ShurikenKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken"]
+layout_mode = 2
+text = "S"
+label_settings = SubResource("LabelSettings_aftj3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestBoxCon" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -87.0
-offset_bottom = 46.0
+offset_left = -145.0
+offset_bottom = 59.0
 grow_horizontal = 0
+script = ExtResource("17_q8f2f")
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="QuestBoxCon"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestBoxCon"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="QuestTitleLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
 layout_mode = 2
 text = "=Quests="
 label_settings = SubResource("LabelSettings_ns5mm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="QuestNameLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_hvcos")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="QuestBoxCon/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="QuestDescLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Talk to Mr. Totu: 0/1"
 label_settings = SubResource("LabelSettings_p7v8c")
+vertical_alignment = 1
+autowrap_mode = 1
 
-[connection signal="timeout" from="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton/FireballCDTimer" to="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton" method="_on_fireball_cd_timer_timeout"]
-[connection signal="timeout" from="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton/KunaiCDTimer" to="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton" method="_on_kunai_cd_timer_timeout"]
-[connection signal="timeout" from="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton/ShurikenCDTimer" to="ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton" method="_on_shuriken_cd_timer_timeout"]
+[connection signal="timeout" from="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton/FireballCDTimer" to="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton" method="_on_fireball_cd_timer_timeout"]
+[connection signal="timeout" from="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton/KunaiCDTimer" to="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton" method="_on_kunai_cd_timer_timeout"]
+[connection signal="timeout" from="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton/ShurikenCDTimer" to="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken/ShurikenButton" method="_on_shuriken_cd_timer_timeout"]
