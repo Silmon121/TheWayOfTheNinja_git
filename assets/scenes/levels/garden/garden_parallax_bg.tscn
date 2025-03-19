@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://x8j8mkrtc4x1"]
+[gd_scene load_steps=6 format=3 uid="uid://dp8qp4eva1mku"]
 
 [ext_resource type="Texture2D" uid="uid://84don6d381sn" path="res://assets/art/levels/tutorial_level/garden/sprites/garden_bg_sky.png" id="1_lavka"]
 [ext_resource type="Script" path="res://assets/scripts/levels/clouds_bg.gd" id="2_fyriw"]

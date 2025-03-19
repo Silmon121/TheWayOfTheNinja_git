@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://d4ciqryd2upsb"]
 
 [ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/garden/tutorial_level_garden.gd" id="1_e7dyp"]
-[ext_resource type="PackedScene" uid="uid://x8j8mkrtc4x1" path="res://assets/scenes/levels/garden/garden_parallax_bg.tscn" id="2_mnr4d"]
-[ext_resource type="Texture2D" uid="uid://dojqhoag8tcwy" path="res://assets/art/levels/tutorial_level/garden/tileset/Garden_Tileset.png" id="2_rjj51"]
+[ext_resource type="PackedScene" uid="uid://dp8qp4eva1mku" path="res://assets/scenes/levels/garden/garden_parallax_bg.tscn" id="2_mnr4d"]
+[ext_resource type="Texture2D" uid="uid://dojqhoag8tcwy" path="res://assets/art/levels/tutorial_level/garden/tileset/garden_tileset.png" id="2_rjj51"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="2_vag8a"]
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="3_fnrhv"]
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="3_q1qgy"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="5_1tx7u"]
 [ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/tranquil_breeze.wav" id="6_0b701"]
 [ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="8_flt6q"]
-[ext_resource type="PackedScene" uid="uid://exsgebvyqmcv" path="res://assets/scenes/npcs/enemies/ninja_spirit.tscn" id="11_a0ul0"]
-[ext_resource type="PackedScene" uid="uid://c2dfeaswi7m3l" path="res://assets/scenes/ui/quests/garden_quest.tscn" id="12_ayx26"]
+[ext_resource type="PackedScene" path="res://assets/scenes/npcs/enemies/ninja_spirit.tscn" id="11_a0ul0"]
+[ext_resource type="PackedScene" uid="uid://41v8fo3srdge" path="res://assets/scenes/ui/quests/garden_quest.tscn" id="12_ayx26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wghjj"]
 texture = ExtResource("2_rjj51")
@@ -286,11 +286,8 @@ sources/0 = SubResource("TileSetAtlasSource_wghjj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6can"]
 size = Vector2(35, 81)
 
-[node name="TutorialLevelGarden" type="Node2D" node_paths=PackedStringArray("garden_quest")]
+[node name="TutorialLevelGarden" type="Node2D"]
 script = ExtResource("1_e7dyp")
-dialog_key = "quest1"
-character = "mr_tuto"
-garden_quest = NodePath("GardenQuest")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_mnr4d")]
 

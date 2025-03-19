@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dui4s8xnsfbir"]
+[gd_scene load_steps=3 format=3 uid="uid://s6ky1gpoca0r"]
 
 [ext_resource type="Texture2D" uid="uid://cd2weqkpr01jn" path="res://assets/art/levels/forest_level/bg/forest_trees_behind_bg.png" id="1_daavw"]
 [ext_resource type="Texture2D" uid="uid://bnw5lyuqlhu10" path="res://assets/art/levels/forest_level/bg/forest_trees_bg.png" id="1_q64uw"]

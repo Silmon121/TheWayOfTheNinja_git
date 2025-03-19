@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciaxmv5b762j1"]
+[gd_scene load_steps=8 format=3 uid="uid://pw3jimefuxpw"]
 
 [ext_resource type="Texture2D" uid="uid://j4wxnhoaa5p3" path="res://assets/art/levels/forest_level/tileset/forest_level_tileset.png" id="1_200u7"]
-[ext_resource type="PackedScene" uid="uid://dui4s8xnsfbir" path="res://assets/scenes/levels/forest/forest_parallax_bg.tscn" id="2_eitcc"]
+[ext_resource type="PackedScene" uid="uid://s6ky1gpoca0r" path="res://assets/scenes/levels/forest/forest_parallax_bg.tscn" id="2_eitcc"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="3_mi3lu"]
 [ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="4_j6kjj"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="5_cfj02"]
