@@ -1,19 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1bd00cve4kpo"]
+[gd_scene load_steps=11 format=3 uid="uid://c1bd00cve4kpo"]
 
 [ext_resource type="Texture2D" uid="uid://bye0ir34mmkyl" path="res://assets/animations/projectiles/kunai/kunai.png" id="1_63y87"]
 [ext_resource type="Script" path="res://assets/scripts/projectiles/kunai.gd" id="1_sos0i"]
+[ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="3_7lwlg"]
 [ext_resource type="AudioStream" uid="uid://cgpuyljgj64r2" path="res://assets/audio/sound_effects/combat/projectiles/shuriken/shuriken_hit.mp3" id="3_gkuen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruspq"]
 size = Vector2(29, 10)
 
-[sub_resource type="Animation" id="Animation_5ho3q"]
-resource_name = "KunaiLeft"
-length = 0.1
+[sub_resource type="Animation" id="Animation_1jtqm"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("KunaiSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("KunaiSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("KunaiSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -49,7 +49,71 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/path = NodePath("KunaiSprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("KunaiSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5ho3q"]
+resource_name = "kunai_left"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KunaiSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_63y87")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KunaiSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KunaiSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KunaiSprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -61,7 +125,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("KunaiSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -72,12 +136,12 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_p5hsu"]
-resource_name = "KunaiRight"
+resource_name = "kunai_right"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("KunaiSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +153,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("KunaiSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,7 +165,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("KunaiSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -113,7 +177,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/path = NodePath("KunaiSprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -125,70 +189,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_1jtqm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_63y87")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:flip_h")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("KunaiSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -200,38 +201,46 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hm8x8"]
 _data = {
-"KunaiLeft": SubResource("Animation_5ho3q"),
-"KunaiRight": SubResource("Animation_p5hsu"),
-"RESET": SubResource("Animation_1jtqm")
+"RESET": SubResource("Animation_1jtqm"),
+"kunai_left": SubResource("Animation_5ho3q"),
+"kunai_right": SubResource("Animation_p5hsu")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjp30"]
 size = Vector2(29, 10)
 
-[node name="Kunai" type="CharacterBody2D"]
+[node name="Kunai" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hit_audio")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_sos0i")
+projectile_name = "kunai"
+projectile_speed = 400
+damage = 20
+anim_player = NodePath("KunaiAnimation")
+hit_audio = NodePath("KunaiHitAudio")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="KunaiCollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_ruspq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="KunaiAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hm8x8")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="KunaiSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_63y87")
 
-[node name="KunaiArea" type="Area2D" parent="."]
+[node name="HitBox" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_7lwlg")]
+collision_layer = 8
+collision_mask = 32
+entity = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KunaiArea"]
+[node name="HitCollisionBox" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vjp30")
 
-[node name="KunaiHit" type="AudioStreamPlayer2D" parent="."]
+[node name="KunaiHitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_gkuen")
 
-[connection signal="area_entered" from="KunaiArea" to="." method="_on_kunai_area_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

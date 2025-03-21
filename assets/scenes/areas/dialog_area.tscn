@@ -5,7 +5,7 @@
 [node name="DialogArea" type="Area2D"]
 process_mode = 3
 collision_layer = 2
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_vpqgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

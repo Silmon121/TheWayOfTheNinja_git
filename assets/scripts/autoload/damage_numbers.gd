@@ -2,7 +2,7 @@ extends Node
 
 var player_attacked_enemy: bool = false
 
-func displayNumber(value: int, position:Vector2):
+func display_number(value: int, position:Vector2):
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)

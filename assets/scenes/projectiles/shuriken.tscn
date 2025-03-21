@@ -2,82 +2,20 @@
 
 [ext_resource type="Script" path="res://assets/scripts/projectiles/shuriken.gd" id="1_2bjpq"]
 [ext_resource type="Texture2D" uid="uid://bvxplagjj33bp" path="res://assets/animations/projectiles/shuriken/shuriken.png" id="1_knxh3"]
+[ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="3_7i35b"]
 [ext_resource type="AudioStream" uid="uid://cgpuyljgj64r2" path="res://assets/audio/sound_effects/combat/projectiles/shuriken/shuriken_hit.mp3" id="3_s0eve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7gwk"]
 radius = 10.0499
 
-[sub_resource type="Animation" id="Animation_ygps6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_knxh3")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:vframes")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_j86jt"]
-resource_name = "flyingShurikenLeft"
+resource_name = "shuriken_left"
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("ShurikenSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("ShurikenSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("ShurikenSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -113,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/path = NodePath("ShurikenSprite:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -125,7 +63,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("ShurikenSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -136,13 +74,13 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_bv2nw"]
-resource_name = "flyingShurikenRight"
+resource_name = "shuriken_right"
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("ShurikenSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -154,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/path = NodePath("ShurikenSprite:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -166,7 +104,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("ShurikenSprite:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -178,7 +116,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/path = NodePath("ShurikenSprite:vframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -190,7 +128,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/path = NodePath("ShurikenSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -202,37 +140,45 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_poqxp"]
 _data = {
-"RESET": SubResource("Animation_ygps6"),
-"flyingShurikenLeft": SubResource("Animation_j86jt"),
-"flyingShurikenRight": SubResource("Animation_bv2nw")
+"shuriken_left": SubResource("Animation_j86jt"),
+"shuriken_right": SubResource("Animation_bv2nw")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kwso"]
 
-[node name="Shuriken" type="CharacterBody2D"]
+[node name="Shuriken" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hit_audio")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2bjpq")
+projectile_name = "shuriken"
+projectile_speed = 600
+damage = 10
+anim_player = NodePath("ShurikenAnimation")
+hit_audio = NodePath("ShurikenHitAudio")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ShurikenCollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i7gwk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ShurikenAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_poqxp")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShurikenSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_knxh3")
+flip_h = true
 vframes = 2
 
-[node name="ShurikenArea" type="Area2D" parent="."]
+[node name="HitBox" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_7i35b")]
+collision_layer = 8
+collision_mask = 32
+entity = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShurikenArea"]
+[node name="HitCollisionBox" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_3kwso")
 
-[node name="ShurikenHit" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
+[node name="ShurikenHitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s0eve")
 
-[connection signal="area_entered" from="ShurikenArea" to="." method="_on_shuriken_area_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

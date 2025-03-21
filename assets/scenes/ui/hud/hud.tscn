@@ -279,7 +279,8 @@ one_shot = true
 
 [node name="ShurikenKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerShuriken"]
 layout_mode = 2
-text = "S"
+text = "X
+"
 label_settings = SubResource("LabelSettings_aftj3")
 horizontal_alignment = 1
 vertical_alignment = 1

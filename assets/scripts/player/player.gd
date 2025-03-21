@@ -1,10 +1,11 @@
-extends CharacterBody2D
-class_name Player
+class_name Player extends CharacterBody2D
+
 #Libraries
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") #LIBRARY FOR GRAVITY
 #nodes
 @onready var animation = %AnimationPlayer #References animation file
 @onready var stamina_recover_timer = %StaminaRecover
+@onready var katana_hitbox = %KatanaCollisionBox
 #MOVEMENT
 #SPEED
 @export var walk_speed : int = 100 #WALK SPEED
@@ -20,7 +21,7 @@ class_name Player
 
 @onready var area_list: Array
 func _ready():
-	$KatanaDamageBox/CollisionShape2D.disabled = true
+	katana_hitbox.disabled = true
 	LevelManager.get_current_scene() #This will get the main node of the scene where the player currently is.
 	DialogManager.dialog_opened.connect(idle) #When the dialog opens, then the player will enter idle state.
 func _physics_process(delta):
@@ -44,8 +45,8 @@ func player_physics(delta):
 	#Get the direciton
 	DirectionManager.get_direction()
 	#This will disable katana attack collision box when the player will attack
-	if !$KatanaDamageBox/CollisionShape2D.disabled:
-		$KatanaDamageBox/CollisionShape2D.disabled = true
+	if !katana_hitbox.disabled:
+		katana_hitbox.disabled = true
 	#Player is on the ground
 	if is_on_floor():
 		#Player has fallen to the ground 
@@ -126,12 +127,13 @@ func idle():
 #COMBAT METHODS
 #MELEE COMBAT
 func katana_attack():
-	$KatanaDamageBox/CollisionShape2D.disabled = false
+	katana_hitbox.disabled = false
 	attack_anim_finished = false
-	animation.play("katanaAttack1"+ DirectionManager.anim_direction)
+	animation.play("katana_attack_"+ DirectionManager.anim_direction)
 	%KatanaSwing.play()
 #PROJECTILES
 func throw_kunai():
+	#HUD registration
 	AbilityManager.kunai_ready = false
 	AbilityManager.kunai_thrown.emit()
 	#Creates new kunai instance that is added to the scene using add_child to the current_scene
@@ -165,26 +167,19 @@ func regenerate_chakra():
 		
 #COLIDE REGISTRATION
 #WHEN PLAYER COLIDES WITH AN ENEMY
-func _on_hurt_box_area_entered(area):
-	if area.name == "enemyArea":
-		HealthManager.take_damage(10)
+func take_damage(damage):
+	HealthManager.take_damage(damage)
 #TIMERS
 #STAMINA STARTS RECOVERING AFTER COOLDOWN
 func _on_stamina_recover_timeout():
 	StaminaManager.stamina_recover_allowed = true;
 #ANIMATION FINISHED
 func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == "katanaAttack1Right" or anim_name == "katanaAttack1Left"):
+	if(anim_name == "katana_attack_Right" or anim_name == "katana_attack_Left"):
 		attack_anim_finished = true
 	elif(anim_name == "chakraRegenRight" or anim_name == "chakraRegenLeft"):
 		chakra_anim_finished = true
-#When katana will hit an enemy
-func _on_katana_damage_box_area_entered(area):
-	DamageNumbers.player_attacked_enemy = true
-	if area.is_in_group("enemy"):
-		DamageNumbers.displayNumber(25,area.global_position)
-	await get_tree().create_timer(0.1).timeout
-	DamageNumbers.player_attacked_enemy = false
+
 func _on_player_interaction_area_area_entered(area):
 	if area not in area_list:
 		area_list.append(area)
@@ -202,4 +197,6 @@ func get_nearest_area() -> Node:
 	return nearest_area
 func get_distance_to_area(area) -> float:
 	return self.global_position.distance_to(area.global_position)
-	
+
+
+
