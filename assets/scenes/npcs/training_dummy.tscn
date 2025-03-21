@@ -1,30 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2hv1hesjbdxb"]
+[gd_scene load_steps=6 format=3 uid="uid://c2hv1hesjbdxb"]
 
 [ext_resource type="Script" path="res://assets/scripts/npcs/training_dummy.gd" id="1_xapuw"]
 [ext_resource type="Texture2D" uid="uid://cexdols0swtjo" path="res://assets/art/levels/tutorial_level/dojo/sprites/training_dummy.png" id="2_6h8rl"]
+[ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="3_2m7ro"]
+[ext_resource type="PackedScene" uid="uid://b5uneoe55rg5k" path="res://assets/scenes/areas/hurt_box.tscn" id="3_te1mm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_limir"]
 radius = 14.0
 height = 80.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot1tu"]
-size = Vector2(27, 76)
-
-[node name="training_dummy" type="CharacterBody2D"]
-collision_layer = 2
+[node name="TrainingDummy" type="CharacterBody2D"]
+collision_layer = 32
 script = ExtResource("1_xapuw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DummySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6h8rl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="DummyCollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_limir")
 
-[node name="HitArea" type="Area2D" parent="." groups=["enemy"]]
+[node name="HurtBox" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_te1mm")]
+collision_layer = 32
+collision_mask = 24
+entity = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_ot1tu")
+[node name="DummyCollisionBox2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_limir")
 
-[node name="DamageNumberOrigin" type="Node2D" parent="."]
+[node name="HitBox" parent="." node_paths=PackedStringArray("entity") groups=["enemy"] instance=ExtResource("3_2m7ro")]
+entity = NodePath("..")
+
+[node name="DummyCollisionBox" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_limir")

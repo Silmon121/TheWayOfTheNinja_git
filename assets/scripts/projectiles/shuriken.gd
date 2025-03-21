@@ -1,22 +1,12 @@
-extends CharacterBody2D
-class_name Shuriken
-var direction: float
-var spawnPos: Vector2
-var spawnRot: float
-@export var projectileSpeed = 600;
-func _physics_process(delta):
-	position.x += direction * projectileSpeed * delta
-	move_and_slide()
+class_name Shuriken extends Projectile
+
+#Plays animation when new instance is created
 func _ready():
-	global_position = spawnPos
-	global_rotation = spawnRot
-	$AnimationPlayer.play("flyingShurikenRight")
-func destroy():
-	queue_free()
-func _on_shuriken_area_area_entered(area):
-	if area.is_in_group("enemy"):
-		DamageNumbers.displayNumber(10,area.global_position)
-		%ShurikenHit.play()
-		hide()
-		if(!%ShurikenHit.playing):
-			destroy()
+	play_anim()
+#Moves the projectile
+func _physics_process(delta):
+	move(delta, self)
+#Controls when the projectile collides
+func _on_hit_box_area_entered(area):
+	if area.is_in_group("hurtbox"):
+		hit(self)
