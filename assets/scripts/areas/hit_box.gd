@@ -8,5 +8,5 @@ class_name HitBox extends Area2D
 func _ready():
 	#This will activate for other entities that are made by EntityTemplate
 	#This makes it more dynamic
-	if entity != null and entity is Entity:
+	if entity != null and entity is Entity or entity is Projectile:
 		damage = entity.damage

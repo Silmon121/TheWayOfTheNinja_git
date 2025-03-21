@@ -305,7 +305,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
@@ -348,6 +348,7 @@ position = Vector2(280, 248)
 
 [node name="DialogAreaMrTuto2" parent="TileMap/MrTuto" node_paths=PackedStringArray("npc") instance=ExtResource("4_h6plk")]
 scale = Vector2(0.996473, 0.996362)
+collision_mask = 16
 npc = NodePath("..")
 dialog_key = "quest1"
 character = "mr_tuto"

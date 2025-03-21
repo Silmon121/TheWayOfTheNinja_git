@@ -2283,6 +2283,7 @@ shape = SubResource("RectangleShape2D_ips6j")
 [node name="KatanaHitBox" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("11_6cn0h")]
 collision_layer = 16
 entity = NodePath("..")
+damage = 20
 
 [node name="KatanaCollisionBox" type="CollisionShape2D" parent="KatanaHitBox"]
 unique_name_in_owner = true
