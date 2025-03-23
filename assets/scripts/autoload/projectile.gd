@@ -21,7 +21,6 @@ func move(delta, projectile:Node):
 	move_and_slide()
 func play_anim():
 	if anim_player != null:
-		print(projectile_name + "_" + DirectionManager.anim_direction.to_lower())
 		anim_player.play(projectile_name + "_" + DirectionManager.anim_direction.to_lower())
 #Method for the time when the projectile hits target
 func hit(projectile:Node):

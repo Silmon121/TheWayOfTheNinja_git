@@ -181,7 +181,6 @@ func _on_animation_player_animation_finished(anim_name):
 		chakra_anim_finished = true
 
 func _on_player_interaction_area_area_entered(area):
-	print(area.name)
 	if area not in area_list:
 		area_list.append(area)
 func _on_player_interaction_area_area_exited(area):

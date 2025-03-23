@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbycdscsamd4e"]
+
+[ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://assets/art/ui/hud/bars/bar_frame.png" id="1_i0xdh"]
+[ext_resource type="Texture2D" uid="uid://cyv8xa2hkviuk" path="res://assets/art/ui/hud/bars/health_progress.png" id="2_s6fq7"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/entity_health_bar.gd" id="3_ey35s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0onup"]
+font_size = 6
+
+[node name="entity_health_bar" type="TextureProgressBar"]
+offset_left = -54.0
+offset_top = -6.0
+offset_right = 54.0
+offset_bottom = 6.0
+value = 50.0
+texture_under = ExtResource("1_i0xdh")
+texture_progress = ExtResource("2_s6fq7")
+script = ExtResource("3_ey35s")
+
+[node name="NumberDisplayLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 12.0
+label_settings = SubResource("LabelSettings_0onup")
+horizontal_alignment = 1
+vertical_alignment = 1

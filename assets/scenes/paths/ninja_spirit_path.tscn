@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_kup43"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 40, 2, 0, 0, 0, 0, 328, 2)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 296, 2)
 }
 point_count = 2
 
@@ -36,7 +36,7 @@ curve = SubResource("Curve2D_kup43")
 script = ExtResource("1_b7m4v")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(40, 2)
+position = Vector2(0, 2)
 rotates = false
 
 [node name="NinjaSpirit" parent="PathFollow2D" instance=ExtResource("1_i64q7")]

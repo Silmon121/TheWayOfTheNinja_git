@@ -7,7 +7,7 @@ var area_active = false
 func _ready():
 	interact_button_guide.visible = false
 	InteractionManager.nearest_area_active.connect(change_state)
-	QuestManager.allow_next_level.connect(open_exit)
+	Quest.allow_next_level.connect(open_exit)
 	self.monitorable = false
 func _input(event):
 	if area_active and event.is_action_pressed("interact"):
