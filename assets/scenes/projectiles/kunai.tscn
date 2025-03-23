@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1bd00cve4kpo"]
+[gd_scene load_steps=10 format=3 uid="uid://c1bd00cve4kpo"]
 
 [ext_resource type="Texture2D" uid="uid://bye0ir34mmkyl" path="res://assets/animations/projectiles/kunai/kunai.png" id="1_63y87"]
 [ext_resource type="Script" path="res://assets/scripts/projectiles/kunai.gd" id="1_sos0i"]
 [ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="3_7lwlg"]
-[ext_resource type="AudioStream" uid="uid://cgpuyljgj64r2" path="res://assets/audio/sound_effects/combat/projectiles/shuriken/shuriken_hit.mp3" id="3_gkuen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruspq"]
 size = Vector2(29, 10)
@@ -209,7 +208,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjp30"]
 size = Vector2(29, 10)
 
-[node name="Kunai" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hit_audio")]
+[node name="Kunai" type="CharacterBody2D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_sos0i")
@@ -217,7 +216,6 @@ projectile_name = "kunai"
 projectile_speed = 400
 damage = 20
 anim_player = NodePath("KunaiAnimation")
-hit_audio = NodePath("KunaiHitAudio")
 
 [node name="KunaiCollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
@@ -239,8 +237,5 @@ entity = NodePath("..")
 [node name="HitCollisionBox" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vjp30")
-
-[node name="KunaiHitAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gkuen")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -9,6 +9,7 @@ func _ready():
 	InteractionManager.nearest_area_active.connect(change_state)
 	Quest.allow_next_level.connect(open_exit)
 	self.monitorable = false
+	self.monitoring = false
 func _input(event):
 	if area_active and event.is_action_pressed("interact"):
 		get_tree().change_scene_to_file(next_level)
@@ -24,6 +25,7 @@ func change_state(area):
 		interact_button_guide.visible = false
 func open_exit():
 	self.monitorable = true
+	self.monitoring = true
 
 
 func _on_area_entered(area):

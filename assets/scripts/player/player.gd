@@ -1,29 +1,25 @@
-class_name Player extends CharacterBody2D
+class_name Player extends PlayerManager
 
-#Libraries
-@onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") #LIBRARY FOR GRAVITY
-#nodes
-@onready var animation = %AnimationPlayer #References animation file
+
 @onready var stamina_recover_timer = %StaminaRecover
 @onready var katana_hitbox = %KatanaCollisionBox
-#MOVEMENT
-#SPEED
-@export var walk_speed : int = 100 #WALK SPEED
-@export var sprint_speed: int = 225 #RUN SPEED
-@export var jump_velocity: int  = -400 #jUMP SPEED
 
+#Current speed
 @onready var current_speed: int = walk_speed #HOLDS CURRENT PLAYER SPEED WHEN PLAYER JUMPS
-#DIRECTION
+
 @onready var falling = false;
 #COMBAT
 @onready var attack_anim_finished = true;
 @onready var chakra_anim_finished = false;
 
 @onready var area_list: Array
+
 func _ready():
+	health = max_health 
 	katana_hitbox.disabled = true
 	LevelManager.get_current_scene() #This will get the main node of the scene where the player currently is.
 	DialogManager.dialog_opened.connect(idle) #When the dialog opens, then the player will enter idle state.
+
 func _physics_process(delta):
 	move_and_slide()
 	player_physics(delta)
@@ -167,8 +163,7 @@ func regenerate_chakra():
 		
 #COLIDE REGISTRATION
 #WHEN PLAYER COLIDES WITH AN ENEMY
-func take_damage(damage):
-	HealthManager.take_damage(damage)
+
 #TIMERS
 #STAMINA STARTS RECOVERING AFTER COOLDOWN
 func _on_stamina_recover_timeout():

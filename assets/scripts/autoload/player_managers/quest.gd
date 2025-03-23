@@ -16,6 +16,7 @@ var selected_text = []
 var text_key: String
 
 var task_done: bool = false
+var door_opened: bool = false
 
 signal update_quest(quest_name, quest_description)
 

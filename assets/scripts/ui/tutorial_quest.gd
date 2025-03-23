@@ -2,7 +2,6 @@ class_name TutorialQuest extends Quest
 
 @export_group("Animation")
 @export var exit_door_anim: AnimatedSprite2D
-var door_opened: bool = false
 
 func _ready():
 	load_quests()

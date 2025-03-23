@@ -5,7 +5,8 @@ extends Node2D
 @export var tutorial_quest: TutorialQuest
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LevelManager.restore_player_parameters()
+	LevelManager.reset_level()
+	AudioManager.dojo.play()
 	await get_tree().create_timer(0.2).timeout
 	start_tutorial()
 	

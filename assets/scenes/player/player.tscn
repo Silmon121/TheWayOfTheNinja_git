@@ -2250,12 +2250,16 @@ size = Vector2(25, 42.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwufe"]
 size = Vector2(37, 89)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
 z_index = 2
 collision_layer = 17
 collision_mask = 257
 script = ExtResource("1_1f6qp")
+walk_speed = 100
+sprint_speed = 200
 jump_velocity = -450
+max_health = 200
+animation = NodePath("AnimationPlayer")
 
 [node name="PlayerCollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

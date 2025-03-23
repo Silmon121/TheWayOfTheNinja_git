@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5c3jw6j5v2mx"]
+[gd_scene load_steps=24 format=3 uid="uid://ctafhrgrb5hc"]
 
-[ext_resource type="Script" path="res://assets/scripts/ui/hud/hud.gd" id="1_65hfs"]
 [ext_resource type="Texture2D" uid="uid://d15rtacau277y" path="res://assets/art/ui/hud/bars/bar_frame.png" id="1_fu162"]
+[ext_resource type="Script" path="res://assets/scripts/ui/hud/hud.gd" id="1_l5rxi"]
 [ext_resource type="Texture2D" uid="uid://cyv8xa2hkviuk" path="res://assets/art/ui/hud/bars/health_progress.png" id="2_kgjfl"]
 [ext_resource type="Texture2D" uid="uid://bdkpvd32t2k6t" path="res://assets/art/ui/hud/bars/stamina_progress.png" id="3_toukv"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/bars/health_bar.gd" id="4_f2cvy"]
@@ -15,89 +15,37 @@
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/shuriken_action_button.gd" id="12_pwhf1"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/fireball_action_button.gd" id="13_rqpbe"]
 [ext_resource type="Texture2D" uid="uid://bk0ypdkd6maun" path="res://assets/art/ui/hud/action_buttons/shuriken_cooldown_frame.png" id="13_xb00w"]
-[ext_resource type="Texture2D" uid="uid://cts5vl4514w5k" path="res://assets/art/ui/hud/dialogue/dialogue_box.png" id="16_bhr1p"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/quest_system.gd" id="17_q8f2f"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_g7d61"]
-line_spacing = 0.0
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_cvsn1"]
-font_size = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_erq21"]
+[sub_resource type="LabelSettings" id="LabelSettings_6vr8a"]
 font_size = 6
 
-[sub_resource type="LabelSettings" id="LabelSettings_bodto"]
+[sub_resource type="LabelSettings" id="LabelSettings_bxuhe"]
 font_size = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_2wyu3"]
+[sub_resource type="LabelSettings" id="LabelSettings_kou6p"]
 font_size = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_aftj3"]
+[sub_resource type="LabelSettings" id="LabelSettings_fmv4j"]
 font_size = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_ns5mm"]
+[sub_resource type="LabelSettings" id="LabelSettings_rle80"]
 font_size = 12
 
-[sub_resource type="LabelSettings" id="LabelSettings_hvcos"]
+[sub_resource type="LabelSettings" id="LabelSettings_abmw3"]
 font_size = 10
 
-[sub_resource type="LabelSettings" id="LabelSettings_p7v8c"]
+[sub_resource type="LabelSettings" id="LabelSettings_rtq7e"]
 font_size = 9
 
 [node name="Hud" type="Control"]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="DialogBoxCon" type="MarginContainer" parent="."]
-unique_name_in_owner = true
-process_mode = 3
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = -50.0
-offset_right = 125.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("1_65hfs")
-
-[node name="Background" type="TextureRect" parent="DialogBoxCon"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("16_bhr1p")
-stretch_mode = 2
-
-[node name="DialogHeadLabel" type="Label" parent="DialogBoxCon/Background"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -1.0
-offset_right = 78.0
-offset_bottom = 16.0
-text = "Mr. Tuto"
-label_settings = SubResource("LabelSettings_g7d61")
-vertical_alignment = 1
-
-[node name="DialogTextLabel" type="Label" parent="DialogBoxCon/Background"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 3.0
-offset_top = 16.0
-offset_right = 247.0
-offset_bottom = 46.0
-text = "TEST"
-label_settings = SubResource("LabelSettings_cvsn1")
-autowrap_mode = 3
+script = ExtResource("1_l5rxi")
 
 [node name="BasicInfoContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -132,7 +80,7 @@ alignment = 1
 [node name="HPCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/HealthBar/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
+label_settings = SubResource("LabelSettings_6vr8a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -152,7 +100,7 @@ alignment = 1
 [node name="StaminaCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/StaminaBar/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
+label_settings = SubResource("LabelSettings_6vr8a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -173,7 +121,7 @@ alignment = 1
 [node name="ChakraCounter" type="Label" parent="BasicInfoContainer/VBoxContainer/BarsCon/VBoxContainer/ChakraBar/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_erq21")
+label_settings = SubResource("LabelSettings_6vr8a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -221,7 +169,7 @@ one_shot = true
 [node name="FireballKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball"]
 layout_mode = 2
 text = "W"
-label_settings = SubResource("LabelSettings_bodto")
+label_settings = SubResource("LabelSettings_bxuhe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -251,7 +199,7 @@ one_shot = true
 [node name="KunaiKeyGuide" type="Label" parent="BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai"]
 layout_mode = 2
 text = "C"
-label_settings = SubResource("LabelSettings_2wyu3")
+label_settings = SubResource("LabelSettings_kou6p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -281,7 +229,7 @@ one_shot = true
 layout_mode = 2
 text = "X
 "
-label_settings = SubResource("LabelSettings_aftj3")
+label_settings = SubResource("LabelSettings_fmv4j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -305,14 +253,14 @@ theme_override_constants/separation = 0
 [node name="QuestTitleLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
 layout_mode = 2
 text = "=Quests="
-label_settings = SubResource("LabelSettings_ns5mm")
+label_settings = SubResource("LabelSettings_rle80")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuestNameLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_hvcos")
+label_settings = SubResource("LabelSettings_abmw3")
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="QuestBoxCon/VBoxContainer"]
@@ -321,7 +269,7 @@ layout_mode = 2
 [node name="QuestDescLabel" type="Label" parent="QuestBoxCon/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = SubResource("LabelSettings_p7v8c")
+label_settings = SubResource("LabelSettings_rtq7e")
 vertical_alignment = 1
 autowrap_mode = 1
 

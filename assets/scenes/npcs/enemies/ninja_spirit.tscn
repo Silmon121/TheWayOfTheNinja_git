@@ -292,11 +292,12 @@ _data = {
 "walk_right": SubResource("Animation_bxtt8")
 }
 
-[node name="NinjaSpirit" type="CharacterBody2D"]
+[node name="NinjaSpirit" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 collision_layer = 0
 script = ExtResource("1_m6set")
 max_health = 100
 damage = 10
+health_bar = NodePath("entity_health_bar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_21ili")

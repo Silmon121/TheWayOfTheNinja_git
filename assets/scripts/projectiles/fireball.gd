@@ -8,4 +8,5 @@ func _physics_process(delta):
 	move(delta,self)
 #Controls when the projectile collides
 func _on_hit_box_area_entered(area):
-	hit(self)
+	if area.is_in_group("hurtbox"):
+		hit(self)

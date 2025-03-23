@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bih8pbmx2k0uf"]
+[gd_scene load_steps=9 format=3 uid="uid://bih8pbmx2k0uf"]
 
 [ext_resource type="Script" path="res://assets/scripts/projectiles/fireball.gd" id="1_pim24"]
 [ext_resource type="Texture2D" uid="uid://brc87or8cq5ft" path="res://assets/animations/projectiles/fireball/fireball.png" id="2_jerd3"]
-[ext_resource type="AudioStream" uid="uid://dy5b3r2ui7svo" path="res://assets/audio/sound_effects/combat/projectiles/fireball/fireball_hit.mp3" id="3_emq4e"]
 [ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="3_xp27s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3ldn"]
@@ -73,23 +72,21 @@ _data = {
 radius = 12.0
 height = 26.0
 
-[node name="Fireball" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hit_audio")]
-collision_layer = 8
+[node name="Fireball" type="CharacterBody2D" node_paths=PackedStringArray("anim_player")]
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_pim24")
 projectile_name = "fireball"
 projectile_speed = 300
 damage = 30
 anim_player = NodePath("FireballAnimation")
-hit_audio = NodePath("FireballHitAudio")
+
+[node name="FireballCollisionBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_r3ldn")
 
 [node name="FireballSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_jerd3")
 flip_h = true
-
-[node name="FireballCollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(8, 0)
-shape = SubResource("CapsuleShape2D_r3ldn")
 
 [node name="FireballAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -103,8 +100,5 @@ entity = NodePath("..")
 
 [node name="HitCollisionBox" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_w6sue")
-
-[node name="FireballHitAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_emq4e")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

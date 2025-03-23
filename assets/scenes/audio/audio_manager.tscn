@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8w4d0ecesluk"]
+
+[ext_resource type="AudioStream" uid="uid://dy5b3r2ui7svo" path="res://assets/audio/sound_effects/combat/projectiles/fireball/fireball_hit.mp3" id="1_jc3b5"]
+[ext_resource type="Script" path="res://assets/scripts/audio/audio_manager.gd" id="1_l1gmj"]
+[ext_resource type="AudioStream" uid="uid://cgpuyljgj64r2" path="res://assets/audio/sound_effects/combat/projectiles/shuriken/shuriken_hit.mp3" id="3_rf8v5"]
+[ext_resource type="AudioStream" uid="uid://eh3ff5ewbsgq" path="res://assets/audio/music/the_journey_begins.wav" id="4_r2my8"]
+[ext_resource type="AudioStream" uid="uid://bxaayt415yxq" path="res://assets/audio/music/the_way.wav" id="4_ujyi2"]
+[ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/fresh_start.wav" id="5_nkqu7"]
+[ext_resource type="AudioStream" uid="uid://bdpp2nortqs2y" path="res://assets/audio/music/the_first_mission.wav" id="6_xmdim"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("fireball_hit", "kunai_hit", "shuriken_hit", "main_menu", "dojo", "garden", "forest")]
+script = ExtResource("1_l1gmj")
+fireball_hit = NodePath("SoundEffects/FireballHitAudio")
+kunai_hit = NodePath("SoundEffects/KunaiHitAudio")
+shuriken_hit = NodePath("SoundEffects/ShurikenHitAudio")
+main_menu = NodePath("Music/MenuMusicPlayer")
+dojo = NodePath("Music/DojoAudioPlayer")
+garden = NodePath("Music/GardenAudioPlayer")
+forest = NodePath("Music/ForestAudioPlayer")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="FireballHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("1_jc3b5")
+
+[node name="KunaiHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("3_rf8v5")
+
+[node name="ShurikenHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("3_rf8v5")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("4_r2my8")
+
+[node name="DojoAudioPlayer" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("4_ujyi2")
+
+[node name="GardenAudioPlayer" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("5_nkqu7")
+
+[node name="ForestAudioPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_xmdim")
+
+[connection signal="finished" from="SoundEffects/FireballHitAudio" to="." method="_on_fireball_hit_audio_finished"]
+[connection signal="finished" from="SoundEffects/KunaiHitAudio" to="." method="_on_kunai_hit_audio_finished"]
+[connection signal="finished" from="SoundEffects/ShurikenHitAudio" to="." method="_on_shuriken_hit_audio_finished"]

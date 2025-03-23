@@ -12,6 +12,7 @@ height = 80.0
 [node name="TrainingDummy" type="CharacterBody2D"]
 collision_layer = 32
 script = ExtResource("1_xapuw")
+max_health = 999
 
 [node name="DummySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6h8rl")
