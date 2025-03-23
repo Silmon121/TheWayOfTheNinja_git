@@ -27,9 +27,10 @@ LevelManager="*res://assets/scripts/autoload/level_manager.gd"
 DirectionManager="*res://assets/scripts/autoload/player_managers/direction_manager.gd"
 DialogManager="*res://assets/scripts/autoload/player_managers/dialog_manager.gd"
 InteractionManager="*res://assets/scripts/autoload/player_managers/interaction_manager.gd"
-QuestManager="*res://assets/scripts/autoload/player_managers/quest_manager.gd"
+Quest="*res://assets/scripts/autoload/player_managers/quest.gd"
 Entity="*res://assets/scripts/autoload/entity.gd"
 Projectile="*res://assets/scripts/autoload/projectile.gd"
+FileManager="*res://assets/scripts/autoload/file_manager.gd"
 
 [display]
 

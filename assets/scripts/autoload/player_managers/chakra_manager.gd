@@ -12,8 +12,6 @@ func cast_spell(spell_cost):
 	if current_chakra - spell_cost >= 0:
 		current_chakra -= spell_cost
 		chakra_changed.emit()
-	else:
-		print("not enough chakra!")
 #Regenerates chakra
 func regenerate_chakra():
 	current_chakra += chakra_recovery_rate

@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export_group("Entity config")
-@export var health: int = 100
-@export var damage: int 
+@export var max_health: int
+@export var damage: int
+
+var health: int = max_health
 var custom_take_damage: Callable = Callable()
 
 func take_damage(ammount: int):

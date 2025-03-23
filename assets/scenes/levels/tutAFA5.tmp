@@ -311,11 +311,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ja3"]
 size = Vector2(12.7154, 105.39)
 
-[node name="TutorialLevelDojo" type="Node2D" node_paths=PackedStringArray("tutorial_quest")]
+[node name="TutorialLevelDojo" type="Node2D"]
 script = ExtResource("1_ow8p2")
 dialog_key = "quest1"
 character = "mr_tuto"
-tutorial_quest = NodePath("TutorialQuest")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lsfon")

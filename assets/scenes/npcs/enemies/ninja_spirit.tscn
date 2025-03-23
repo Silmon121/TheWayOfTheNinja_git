@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://0nmldd68aq5b"]
+[gd_scene load_steps=14 format=3 uid="uid://0nmldd68aq5b"]
 
 [ext_resource type="Texture2D" uid="uid://dm5yoj6w0t6b6" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_idle.png" id="1_05rgy"]
 [ext_resource type="Script" path="res://assets/scripts/npcs/ninja_spirit.gd" id="1_m6set"]
 [ext_resource type="Texture2D" uid="uid://cdvt3v3khc6e" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_walk.png" id="2_21ili"]
 [ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="2_mvfdn"]
 [ext_resource type="PackedScene" uid="uid://b5uneoe55rg5k" path="res://assets/scenes/areas/hurt_box.tscn" id="4_l1u4o"]
+[ext_resource type="PackedScene" uid="uid://cbycdscsamd4e" path="res://assets/scenes/ui/hud/entity_health_bar.tscn" id="6_ldpq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lvl"]
 size = Vector2(26, 84)
@@ -294,6 +295,7 @@ _data = {
 [node name="NinjaSpirit" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_m6set")
+max_health = 100
 damage = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -325,3 +327,8 @@ shape = SubResource("RectangleShape2D_x8lvl")
 libraries = {
 "": SubResource("AnimationLibrary_nei4x")
 }
+
+[node name="entity_health_bar" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("6_ldpq7")]
+offset_top = -58.0
+offset_bottom = -46.0
+entity = NodePath("..")
