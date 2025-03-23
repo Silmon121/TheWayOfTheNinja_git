@@ -6,6 +6,7 @@ class_name Player extends PlayerManager
 
 #Current speed
 @onready var current_speed: int = walk_speed #HOLDS CURRENT PLAYER SPEED WHEN PLAYER JUMPS
+@onready var audio = AudioManager
 
 @onready var falling = false;
 #COMBAT
@@ -49,7 +50,7 @@ func player_physics(delta):
 		#This will play landing sound
 		if AbilityManager.falling:
 			AbilityManager.falling = false
-			%LandOnWood.play()
+			audio.play_space_audio(audio.wood_land, global_position)
 		if Input.is_action_just_pressed("attack") and !Input.is_action_pressed("regenerate_chakra") and attack_anim_finished:
 			katana_attack()
 		if attack_anim_finished:
@@ -86,25 +87,26 @@ func walk(delta):
 		stamina_recover_timer.start()
 	if StaminaManager.stamina_recover_allowed:
 		StaminaManager.recover_stamina(1) #Stamina starts recovering with multiplier set to 1x because the player is walking
-	current_speed = walk_speed
-	%FootstepsRun.stop()
-	if !%FootstepsWalk.playing:
-		%FootstepsWalk.play()
+	current_speed = walk_speed #For jumping speed 
+	#AUDIO
+	audio.footsteps_run.stop()
+	if !audio.footsteps_walk.playing:
+		audio.play_space_audio(audio.footsteps_walk, global_position)
 func run(delta):
 	position.x += DirectionManager.move_direction * sprint_speed * delta
 	animation.play("run"+ DirectionManager.anim_direction)
 	StaminaManager.deplete_stamina(StaminaManager.stamina_depletion_rate)
 	current_speed = sprint_speed
-	%FootstepsWalk.stop()
-	if(!%FootstepsRun.playing):
-		%FootstepsRun.play()
+	#AUDIO
+	audio.footsteps_walk.stop()
+	if(!audio.footsteps_run.playing):
+		audio.play_space_audio(audio.footsteps_run, global_position)
 func jump():
 	velocity.y = jump_velocity
 	animation.play("jump"+ DirectionManager.anim_direction)
 	AbilityManager.jumped.emit()
 	StaminaManager.deplete_stamina(StaminaManager.stamina_jump_cost)
-	%FootstepsWalk.stop()
-	%FootstepsRun.stop()
+	audio.footsteps_off()
 func fall(delta):
 	velocity.y += gravity * delta
 	position.x += current_speed * DirectionManager.move_direction * delta
@@ -118,15 +120,14 @@ func idle():
 	animation.play("idle"+ DirectionManager.anim_direction)
 	if StaminaManager.stamina_recover_allowed:
 		StaminaManager.recover_stamina(2) #Stamina starts recovering with multiplier 2x because the player is standing still
-	%FootstepsWalk.stop()
-	%FootstepsRun.stop()
+	audio.footsteps_off()
 #COMBAT METHODS
 #MELEE COMBAT
 func katana_attack():
 	katana_hitbox.disabled = false
 	attack_anim_finished = false
 	animation.play("katana_attack_"+ DirectionManager.anim_direction)
-	%KatanaSwing.play()
+	audio.play_space_audio(audio.katana_swing, global_position)
 #PROJECTILES
 func throw_kunai():
 	#HUD registration
@@ -134,13 +135,13 @@ func throw_kunai():
 	AbilityManager.kunai_thrown.emit()
 	#Creates new kunai instance that is added to the scene using add_child to the current_scene
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_kunai(global_position))
-	%KunaiThrow.play()
+	audio.play_space_audio(audio.kunai_throw, global_position)
 func throw_shuriken():
 	AbilityManager.shuriken_ready = false
 	AbilityManager.shuriken_thrown.emit()
 	#Creates new shuriken instance that is added to the scene using add_child to the current_scene
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_shuriken(global_position))
-	%ShurikenThrow.play()
+	audio.play_space_audio(audio.shuriken_throw, global_position)
 func cast_fireball():
 	AbilityManager.fireball_ready = false
 	AbilityManager.fireball_casted.emit()
@@ -149,7 +150,7 @@ func cast_fireball():
 	#Adds fireball instance to the scene
 	#Call deferred is jsut a safe way to add child into the scene, because it won't destroy the frames and godot won't be confused.
 	LevelManager.main_node.add_child.call_deferred(SceneManager.create_fireball(global_position))
-	%FireballCast.play()
+	audio.play_space_audio(audio.fireball_cast, global_position)
 func regenerate_chakra():
 	if stamina_recover_timer.time_left == 0 and StaminaManager.current_stamina != StaminaManager.max_stamina and !StaminaManager.stamina_recover_allowed:
 		stamina_recover_timer.start()
