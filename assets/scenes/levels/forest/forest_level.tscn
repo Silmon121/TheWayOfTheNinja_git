@@ -146,5 +146,9 @@ curve = SubResource("Curve2D_wqubc")
 curve = SubResource("Curve2D_0jk2o")
 type = 1
 
-[node name="ForestQuest" type="Node2D" parent="."]
+[node name="ForestQuest" type="Node2D" parent="." node_paths=PackedStringArray("enemy_node")]
 script = ExtResource("7_howx3")
+enemy_node = NodePath("../Enemies")
+dialog_file = "res://assets/data/dialogues/forest_dialog.json"
+quest_name = "First steps"
+quest_file = "res://assets/data/quests/forest_quest.json"

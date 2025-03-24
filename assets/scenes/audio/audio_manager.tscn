@@ -36,49 +36,63 @@ forest = NodePath("Music/ForestAudioPlayer")
 
 [node name="FireballHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("1_jc3b5")
+bus = &"SFX"
 
 [node name="KunaiHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("3_rf8v5")
+bus = &"SFX"
 
 [node name="ShurikenHitAudio" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("3_rf8v5")
+bus = &"SFX"
 
 [node name="FireballCast" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("4_ii6nk")
+bus = &"SFX"
 
 [node name="FootstepsWalk" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("5_0hlkg")
+bus = &"SFX"
 
 [node name="ShurikenThrow" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("6_6xrmt")
+bus = &"SFX"
 
 [node name="KatanaSwing" type="AudioStreamPlayer2D" parent="SoundEffects"]
 process_mode = 3
 stream = ExtResource("7_nkdiv")
+bus = &"SFX"
 
 [node name="FootstepsRun" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("8_2bbrg")
+bus = &"SFX"
 
 [node name="KunaiThrow" type="AudioStreamPlayer2D" parent="SoundEffects"]
 process_mode = 3
 stream = ExtResource("9_e6xrp")
+bus = &"SFX"
 
 [node name="WoodLand" type="AudioStreamPlayer2D" parent="SoundEffects"]
 process_mode = 3
 stream = ExtResource("10_osrm5")
+bus = &"SFX"
 
 [node name="Music" type="Node" parent="."]
 
 [node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("4_r2my8")
+bus = &"Music"
 
 [node name="DojoAudioPlayer" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
 stream = ExtResource("4_ujyi2")
+bus = &"Music"
 
 [node name="GardenAudioPlayer" type="AudioStreamPlayer" parent="Music"]
 process_mode = 3
 stream = ExtResource("5_nkqu7")
+bus = &"Music"
 
 [node name="ForestAudioPlayer" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("6_xmdim")
+bus = &"Music"

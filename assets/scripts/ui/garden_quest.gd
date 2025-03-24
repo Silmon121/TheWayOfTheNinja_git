@@ -22,5 +22,5 @@ func _on_training_ground_quest_area_area_entered(area):
 		DialogManager.start_dialog(training_area.dialog_file, "quest3", "mr_tuto")
 		next_task()
 func enemies_defeated():
-	if enemy_node.get_children().size() == 4 and active_task == "quest3":
+	if enemy_node.get_children().size() == 0 and active_task == "quest3":
 		complete_task()

@@ -8,7 +8,6 @@ extends LevelManager
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset_stats()
-	
 	AudioManager.dojo.play()
 	await get_tree().create_timer(0.2).timeout
 	start_tutorial()
