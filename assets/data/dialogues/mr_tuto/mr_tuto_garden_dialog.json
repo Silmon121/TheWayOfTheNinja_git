@@ -5,8 +5,24 @@
     "Because now you'll use everything you've learned.",
     "Go to the training ground, which is to the right."
   ],
-  "quest2": [
+  "quest2":[
+    "Why are you still here?",
+    "Go to the training ground, to the right."
+  ],
+  "quest3": [
     "Your task is to defeat the spirits of yourself!",
     "Go and use everything I've taught you."
+  ],
+  "quest4": [
+    "Well done!",
+    "You are now qualified to be a ninja!",
+    "But don't get cocky!",
+    "You are still just a genin, which is the lowest rank.",
+    "Stay humble and practice and maybe one day you'll be able to become the greates ninja!",
+    "Now, don't just stand there!",
+    "Your first mission is to eliminate enemy troops in the forest not far from here.",
+    "Come speak to me when you are ready to go.",
+    "Good luck!"
   ]
+
 }

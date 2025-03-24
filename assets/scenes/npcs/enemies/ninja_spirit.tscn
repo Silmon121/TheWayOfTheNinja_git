@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://0nmldd68aq5b"]
+[gd_scene load_steps=17 format=3 uid="uid://0nmldd68aq5b"]
 
 [ext_resource type="Texture2D" uid="uid://dm5yoj6w0t6b6" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_idle.png" id="1_05rgy"]
 [ext_resource type="Script" path="res://assets/scripts/npcs/ninja_spirit.gd" id="1_m6set"]
 [ext_resource type="Texture2D" uid="uid://cdvt3v3khc6e" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_walk.png" id="2_21ili"]
 [ext_resource type="PackedScene" uid="uid://de8gioc3svtgn" path="res://assets/scenes/areas/hit_box.tscn" id="2_mvfdn"]
+[ext_resource type="Texture2D" uid="uid://cjejuetwrth1s" path="res://assets/animations/npcs/enemies/ninja_spirit/ninja_spirit_death.png" id="2_ywyke"]
 [ext_resource type="PackedScene" uid="uid://b5uneoe55rg5k" path="res://assets/scenes/areas/hurt_box.tscn" id="4_l1u4o"]
 [ext_resource type="PackedScene" uid="uid://cbycdscsamd4e" path="res://assets/scenes/ui/hud/entity_health_bar.tscn" id="6_ldpq7"]
 
@@ -23,6 +24,182 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ywyke")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_cm5a4"]
+resource_name = "death_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ywyke")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fifov"]
+resource_name = "death_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ywyke")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_llpv1"]
@@ -286,22 +463,25 @@ tracks/4/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nei4x"]
 _data = {
 "RESET": SubResource("Animation_eimfs"),
+"death_left": SubResource("Animation_cm5a4"),
+"death_right": SubResource("Animation_fifov"),
 "idle_left": SubResource("Animation_llpv1"),
 "idle_right": SubResource("Animation_hqaxx"),
 "walk_left": SubResource("Animation_mbu0u"),
 "walk_right": SubResource("Animation_bxtt8")
 }
 
-[node name="NinjaSpirit" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
+[node name="NinjaSpirit" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "animation")]
 collision_layer = 0
 script = ExtResource("1_m6set")
 max_health = 100
 damage = 10
 health_bar = NodePath("entity_health_bar")
+animation = NodePath("NinjaSpiritAnimation")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_21ili")
-hframes = 5
+texture = ExtResource("2_ywyke")
+hframes = 2
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

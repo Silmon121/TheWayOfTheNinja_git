@@ -21,7 +21,6 @@ func play_anim():
 		anim_player.play(projectile_name + "_" + DirectionManager.anim_direction.to_lower())
 #Method for the time when the projectile hits target
 func hit(projectile:Node):
-	print("HIT")
 	match projectile.name:
 		"Fireball":
 			AudioManager.play_space_audio(AudioManager.fireball_hit, projectile.global_position)

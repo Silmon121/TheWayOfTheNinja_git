@@ -311,9 +311,11 @@ size = Vector2(12.7154, 105.39)
 
 [node name="TutorialLevelDojo" type="Node2D" node_paths=PackedStringArray("tutorial_quest")]
 script = ExtResource("1_ow8p2")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_dialogue.json"
 dialog_key = "quest1"
 character = "mr_tuto"
 tutorial_quest = NodePath("TutorialQuest")
+current_level_path = "res://assets/scenes/levels/tutorial_level_dojo.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lsfon")
@@ -348,6 +350,7 @@ position = Vector2(280, 248)
 scale = Vector2(0.996473, 0.996362)
 collision_mask = 16
 npc = NodePath("..")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_dialogue.json"
 dialog_key = "quest1"
 character = "mr_tuto"
 

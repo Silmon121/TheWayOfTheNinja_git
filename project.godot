@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 DamageNumbers="*res://assets/scripts/autoload/damage_numbers.gd"
 SceneManager="*res://assets/scripts/autoload/scene_manager.gd"
-HealthManager="*res://assets/scripts/autoload/player_managers/health_manager.gd"
 StaminaManager="*res://assets/scripts/autoload/player_managers/stamina_manager.gd"
 ChakraManager="*res://assets/scripts/autoload/player_managers/chakra_manager.gd"
 AbilityManager="*res://assets/scripts/autoload/player_managers/ability_manager.gd"
@@ -27,12 +26,12 @@ LevelManager="*res://assets/scripts/autoload/level_manager.gd"
 DirectionManager="*res://assets/scripts/autoload/player_managers/direction_manager.gd"
 DialogManager="*res://assets/scripts/autoload/player_managers/dialog_manager.gd"
 InteractionManager="*res://assets/scripts/autoload/player_managers/interaction_manager.gd"
-Quest="*res://assets/scripts/autoload/player_managers/quest.gd"
 Entity="*res://assets/scripts/autoload/entity.gd"
 Projectile="*res://assets/scripts/autoload/projectile.gd"
 FileManager="*res://assets/scripts/autoload/file_manager.gd"
 PlayerManager="*res://assets/scripts/autoload/player_manager.gd"
 AudioManager="*res://assets/scenes/audio/audio_manager.tscn"
+Quest="*res://assets/scripts/autoload/player_managers/quest.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-extends Node2D
+extends LevelManager
 
 func _ready():
 	LevelManager.reset_level()

@@ -1,6 +1,7 @@
-extends Node
+extends Node2D
 
 var main_node: Node
+@export_file var current_level_path: String
 
 signal level_changed
 
@@ -19,5 +20,9 @@ func resume_game():
 func next_level(new_level):
 	get_tree().change_scene_to_file(new_level)
 	level_changed.emit() #This will be used later to set health back to 100 when player reaches new level
-func reset_level():
+func reset_stats():
+	AbilityManager.restore_abilities()
 	AudioManager.turn_off_audio()
+	DialogManager.dialog_in_process = false
+func retry():
+	get_tree().change_scene_to_file(current_level_path)

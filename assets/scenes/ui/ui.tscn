@@ -278,7 +278,7 @@ unique_name_in_owner = true
 layout_mode = 2
 label_settings = SubResource("LabelSettings_00sn0")
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="DialogBoxCon" type="MarginContainer" parent="."]
 unique_name_in_owner = true

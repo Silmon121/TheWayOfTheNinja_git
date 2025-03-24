@@ -1,4 +1,4 @@
-extends Node2D
+extends LevelManager
 
 @export_group("Quest")
 @export var dialog_key = "" #Key to the json dictionary
@@ -7,6 +7,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LevelManager.reset_level()
+	reset_stats()
 	AudioManager.garden.play()
 	garden_quest.quest_progress()

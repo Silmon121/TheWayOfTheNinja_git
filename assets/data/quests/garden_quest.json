@@ -4,5 +4,12 @@
   ],
   "quest2": [
     "Go to the training ground"
+  ],
+  "quest3":[
+    "Defeat all enemies!",
+    "Talk to mr. Tuto"
+  ],
+  "quest4":[
+    "Talk to mr. Tuto, when you are ready!"
   ]
 }
