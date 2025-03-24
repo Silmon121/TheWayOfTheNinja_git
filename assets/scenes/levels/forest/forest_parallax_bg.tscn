@@ -1,20 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://s6ky1gpoca0r"]
+[gd_scene load_steps=6 format=3 uid="uid://s6ky1gpoca0r"]
 
 [ext_resource type="Texture2D" uid="uid://cd2weqkpr01jn" path="res://assets/art/levels/forest_level/bg/forest_trees_behind_bg.png" id="1_daavw"]
 [ext_resource type="Texture2D" uid="uid://bnw5lyuqlhu10" path="res://assets/art/levels/forest_level/bg/forest_trees_bg.png" id="1_q64uw"]
+[ext_resource type="Texture2D" uid="uid://dn8df03qkwqro" path="res://assets/art/levels/forest_level/bg/forest_sky_bg.png" id="1_sqpju"]
+[ext_resource type="Texture2D" uid="uid://n55kia5mi0hf" path="res://assets/art/levels/forest_level/bg/bamboo_bg.png" id="2_timtu"]
+[ext_resource type="Texture2D" uid="uid://dymv75cl7t07q" path="res://assets/art/levels/forest_level/bg/forest_filter.png" id="2_tr6q8"]
 
 [node name="ForestParallaxBg" type="ParallaxBackground"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="Sky" type="ParallaxLayer" parent="."]
+position = Vector2(0, -32)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_sqpju")
+centered = false
+
+[node name="ForestFilter" type="ParallaxLayer" parent="."]
+position = Vector2(0, -32)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ForestFilter"]
+texture = ExtResource("2_tr6q8")
+centered = false
+
+[node name="TreesBehind" type="ParallaxLayer" parent="."]
+position = Vector2(0, -32)
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(640, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="TreesBehind"]
 texture = ExtResource("1_daavw")
 centered = false
 
-[node name="trees" type="ParallaxLayer" parent="."]
+[node name="Bamboo" type="ParallaxLayer" parent="."]
+position = Vector2(0, -32)
 motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bamboo"]
+texture = ExtResource("2_timtu")
+centered = false
+
+[node name="trees" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(640, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="trees"]

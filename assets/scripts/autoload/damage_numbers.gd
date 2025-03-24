@@ -1,15 +1,19 @@
 extends Node
 
 var player_attacked_enemy: bool = false
+var color: String
 
-func display_number(value: int, position:Vector2):
+func display_number(value: int, position:Vector2, type):
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 	
-	var color = "#FFF"
+	if type == "enemy":
+		color = "#FFF"
+	elif type == "player":
+		color = "FF0000"
 	
 	number.label_settings.font_color = color
 	number.label_settings.font_size = 18

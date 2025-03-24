@@ -5,11 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dojqhoag8tcwy" path="res://assets/art/levels/tutorial_level/garden/tileset/garden_tileset.png" id="2_rjj51"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="2_vag8a"]
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="3_fnrhv"]
-[ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="3_q1qgy"]
-[ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_wsapu"]
+[ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/ui.tscn" id="4_wsapu"]
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="5_1tx7u"]
 [ext_resource type="Texture2D" uid="uid://nob2tb8n38tj" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door.png" id="8_flt6q"]
-[ext_resource type="AudioStream" uid="uid://cebc7t0lknvni" path="res://assets/audio/music/fresh_start.wav" id="9_xtwcb"]
+[ext_resource type="Script" path="res://assets/scripts/areas/training_ground_area.gd" id="10_4jo4f"]
 [ext_resource type="PackedScene" uid="uid://h336jjftw51t" path="res://assets/scenes/paths/ninja_spirit_path.tscn" id="12_2wvcw"]
 [ext_resource type="Script" path="res://assets/scripts/ui/garden_quest.gd" id="12_sjtof"]
 
@@ -287,6 +286,9 @@ sources/0 = SubResource("TileSetAtlasSource_wghjj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6can"]
 size = Vector2(35, 81)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wl5p"]
+size = Vector2(40, 151.5)
+
 [sub_resource type="Curve2D" id="Curve2D_mugpx"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1576, 256, 0, 0, 0, 0, 1816, 256)
@@ -316,6 +318,7 @@ script = ExtResource("1_e7dyp")
 dialog_key = "quest1"
 character = "mr_tuto"
 garden_quest = NodePath("GardenQuest")
+current_level_path = "res://assets/scenes/levels/tutorial_level_garden.tscn"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_mnr4d")]
 
@@ -345,6 +348,7 @@ position = Vector2(661, 250)
 
 [node name="DialogAreaMrTuto2" parent="TileMap/MrTuto" node_paths=PackedStringArray("npc") instance=ExtResource("3_fnrhv")]
 npc = NodePath("..")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_garden_dialog.json"
 dialog_key = "quest1"
 character = "mr_tuto"
 
@@ -363,46 +367,52 @@ limit_bottom = 320
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="GardenAudioPlayer" type="AudioStreamPlayer2D" parent="Player"]
-process_mode = 3
-position = Vector2(-450, -254)
-stream = ExtResource("9_xtwcb")
-autoplay = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Hud" parent="CanvasLayer" instance=ExtResource("4_wsapu")]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_q1qgy")]
-visible = false
-
 [node name="DojoDoor" type="Sprite2D" parent="."]
 position = Vector2(304, 207)
 scale = Vector2(1, 0.9)
 texture = ExtResource("8_flt6q")
 
-[node name="NinjaSpiritPath" parent="." instance=ExtResource("12_2wvcw")]
-position = Vector2(1000, 254)
-
-[node name="NinjaSpiritPath2" parent="." instance=ExtResource("12_2wvcw")]
-curve = SubResource("Curve2D_mugpx")
-
-[node name="NinjaSpiritPath3" parent="." instance=ExtResource("12_2wvcw")]
-position = Vector2(3, 35)
-curve = SubResource("Curve2D_7iyji")
-
-[node name="NinjaSpiritPath4" parent="." instance=ExtResource("12_2wvcw")]
-position = Vector2(3, 35)
-curve = SubResource("Curve2D_hg0yc")
-
-[node name="NinjaSpiritPath5" parent="." instance=ExtResource("12_2wvcw")]
-position = Vector2(3, 35)
-curve = SubResource("Curve2D_5ig3s")
-
-[node name="GardenQuest" type="Node2D" parent="." node_paths=PackedStringArray("dialog_area")]
+[node name="GardenQuest" type="Node2D" parent="." node_paths=PackedStringArray("enemy_node", "training_area", "dialog_area")]
 script = ExtResource("12_sjtof")
+enemy_node = NodePath("../Enemies")
+training_area = NodePath("../TrainingGroundQuestArea")
 quest_name = "Combat training"
 quest_file = "res://assets/data/quests/garden_quest.json"
 dialog_area = NodePath("../TileMap/MrTuto/DialogAreaMrTuto2")
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_wsapu")]
+player = NodePath("../Player")
+
+[node name="TrainingGroundQuestArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("10_4jo4f")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_garden_dialog.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainingGroundQuestArea"]
+position = Vector2(858, 197)
+shape = SubResource("RectangleShape2D_6wl5p")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="NinjaSpiritPath" parent="Enemies" instance=ExtResource("12_2wvcw")]
+position = Vector2(1000, 254)
+
+[node name="NinjaSpiritPath2" parent="Enemies" instance=ExtResource("12_2wvcw")]
+curve = SubResource("Curve2D_mugpx")
+
+[node name="NinjaSpiritPath3" parent="Enemies" instance=ExtResource("12_2wvcw")]
+position = Vector2(3, 35)
+curve = SubResource("Curve2D_7iyji")
+
+[node name="NinjaSpiritPath4" parent="Enemies" instance=ExtResource("12_2wvcw")]
+position = Vector2(3, 35)
+curve = SubResource("Curve2D_hg0yc")
+
+[node name="NinjaSpiritPath5" parent="Enemies" instance=ExtResource("12_2wvcw")]
+position = Vector2(3, 35)
+curve = SubResource("Curve2D_5ig3s")
+
+[connection signal="area_entered" from="TrainingGroundQuestArea" to="GardenQuest" method="_on_training_ground_quest_area_area_entered"]
 
 [editable path="TileMap/MrTuto/DialogAreaMrTuto2"]

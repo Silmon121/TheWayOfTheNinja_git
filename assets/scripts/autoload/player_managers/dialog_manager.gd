@@ -1,21 +1,17 @@
 extends Node
 
-var mr_tuto_dialog_file = FileAccess.open("res://assets/data/dialogues/mr_tuto/mr_tuto_dialogue.json", FileAccess.READ) #Just loading the json file
-
-var first_dialog_section = "start"
-var last_dialog_section = "last"
-
-var mr_tuto_character = "mr_tuto"
-
 var dialog_in_process : bool = false
+var scene_text = {}
+var selected_text = []
 
-signal display_dialog(dialogue_key, character) #Used in dialogue_area to emit signal that contains specific dialogue_key
+signal display_dialog(dialog_file, dialogue_key, character) #Used in dialogue_area to emit signal that contains specific dialogue_key
 signal dialog_opened
-signal dialog_ended
-signal player_in_dialog_area
-signal player_out_of_dialog_area
 
-func get_dictionary_from_json(json_file) -> Dictionary:
-	var json_string = json_file.get_as_text()
-	var json_dictionary = JSON.parse_string(json_string)
-	return json_dictionary
+func load_dialog_set(dialog_file, text_key, character):
+	var dialog_json = FileAccess.open(dialog_file, FileAccess.READ)
+	if scene_text.is_empty(): #This is loading the specific dialog file for the character
+		scene_text = FileManager.get_dictionary_from_json(dialog_json)
+	selected_text = scene_text[text_key].duplicate()
+func start_dialog(dialog_file, dialog_key, character):
+	dialog_opened.emit() #Only for the player to enter into idle animation when the dialog opens
+	display_dialog.emit(dialog_file, dialog_key, character)

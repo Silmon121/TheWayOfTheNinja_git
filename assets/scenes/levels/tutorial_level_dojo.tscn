@@ -1,18 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://b12ojrm7k1cwu"]
+[gd_scene load_steps=26 format=3 uid="uid://kml40741xcb8"]
 
 [ext_resource type="Texture2D" uid="uid://cb5ebl814ojfa" path="res://assets/art/levels/tutorial_level/dojo/tileset/dojo_tileset.png" id="1_fu15l"]
 [ext_resource type="Script" path="res://assets/scripts/levels/tutorial_level/dojo/tutorial_level_dojo.gd" id="1_ow8p2"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="2_sjk47"]
 [ext_resource type="PackedScene" uid="uid://bswsq47an50w6" path="res://assets/scenes/npcs/mr_tuto.tscn" id="3_r42wm"]
 [ext_resource type="PackedScene" uid="uid://m1iwsu0qe0lk" path="res://assets/scenes/areas/dialog_area.tscn" id="4_h6plk"]
-[ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/hud/hud.tscn" id="4_vgfj6"]
+[ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/ui.tscn" id="4_vgfj6"]
 [ext_resource type="PackedScene" uid="uid://c2hv1hesjbdxb" path="res://assets/scenes/npcs/training_dummy.tscn" id="5_6g855"]
 [ext_resource type="Texture2D" uid="uid://dbaox3fimtup6" path="res://assets/art/levels/tutorial_level/dojo/sprites/dojo_door_anim.png" id="7_grk7w"]
 [ext_resource type="Texture2D" uid="uid://bns361qinapt2" path="res://assets/art/levels/tutorial_level/dojo/sprites/weapon_rack.png" id="8_520b4"]
 [ext_resource type="PackedScene" uid="uid://bb776lvmqtc3w" path="res://assets/scenes/areas/next_level_area.tscn" id="8_mq6qp"]
 [ext_resource type="PackedScene" uid="uid://dwi6qecowb77q" path="res://assets/scenes/ui/hud/interact_button_guide.tscn" id="9_qygfe"]
-[ext_resource type="PackedScene" uid="uid://b72fqj16r1ugy" path="res://assets/scenes/ui/menus/pause_menu.tscn" id="11_xargs"]
-[ext_resource type="AudioStream" uid="uid://bxaayt415yxq" path="res://assets/audio/music/the_way.wav" id="13_yqn63"]
 [ext_resource type="Script" path="res://assets/scripts/ui/tutorial_quest.gd" id="14_biy5u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayj06"]
@@ -313,9 +311,11 @@ size = Vector2(12.7154, 105.39)
 
 [node name="TutorialLevelDojo" type="Node2D" node_paths=PackedStringArray("tutorial_quest")]
 script = ExtResource("1_ow8p2")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_dialogue.json"
 dialog_key = "quest1"
 character = "mr_tuto"
 tutorial_quest = NodePath("TutorialQuest")
+current_level_path = "res://assets/scenes/levels/tutorial_level_dojo.tscn"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lsfon")
@@ -350,6 +350,7 @@ position = Vector2(280, 248)
 scale = Vector2(0.996473, 0.996362)
 collision_mask = 16
 npc = NodePath("..")
+dialog_file = "res://assets/data/dialogues/mr_tuto/mr_tuto_dialogue.json"
 dialog_key = "quest1"
 character = "mr_tuto"
 
@@ -404,26 +405,16 @@ drag_bottom_margin = 0.55
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="DojoAudioPlayer" type="AudioStreamPlayer2D" parent="Player"]
-process_mode = 3
-position = Vector2(-103, -248)
-stream = ExtResource("13_yqn63")
-autoplay = true
-
-[node name="Hud" type="CanvasLayer" parent="."]
-
-[node name="Hud" parent="Hud" instance=ExtResource("4_vgfj6")]
-metadata/_edit_use_anchors_ = true
-
-[node name="PauseMenu" parent="Hud" instance=ExtResource("11_xargs")]
-visible = false
-
 [node name="TutorialQuest" type="Node2D" parent="." node_paths=PackedStringArray("exit_door_anim", "dialog_area")]
 script = ExtResource("14_biy5u")
 exit_door_anim = NodePath("../TileMap/Door")
 quest_name = "The beginning"
 quest_file = "res://assets/data/quests/tutorial_quest.json"
 dialog_area = NodePath("../TileMap/MrTuto/DialogAreaMrTuto2")
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_vgfj6")]
+player = NodePath("../Player")
+metadata/_edit_use_anchors_ = true
 
 [editable path="TileMap/MrTuto/DialogAreaMrTuto2"]
 [editable path="TileMap/Door/NextLevelArea"]

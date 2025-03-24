@@ -31,9 +31,12 @@ _data = {
 "move_along_path": SubResource("Animation_8hgv0")
 }
 
-[node name="NinjaSpiritPath" type="Path2D"]
+[node name="NinjaSpiritPath" type="Path2D" node_paths=PackedStringArray("spirit", "hurt_box", "hit_box")]
 curve = SubResource("Curve2D_kup43")
 script = ExtResource("1_b7m4v")
+spirit = NodePath("PathFollow2D/NinjaSpirit")
+hurt_box = NodePath("PathFollow2D/NinjaSpirit/HurtBox")
+hit_box = NodePath("PathFollow2D/NinjaSpirit/HitBox")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(0, 2)
@@ -46,5 +49,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_2r6ul")
 }
+
+[connection signal="animation_finished" from="PathFollow2D/NinjaSpirit/NinjaSpiritAnimation" to="." method="_on_ninja_spirit_animation_animation_finished"]
 
 [editable path="PathFollow2D/NinjaSpirit"]

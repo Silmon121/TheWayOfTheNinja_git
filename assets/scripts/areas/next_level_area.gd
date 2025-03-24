@@ -5,10 +5,10 @@ extends Area2D
 
 var area_active = false
 func _ready():
-	interact_button_guide.visible = false
-	InteractionManager.nearest_area_active.connect(change_state)
+	config()
+	PlayerManager.nearest_area_changed.connect(change_state)
 	Quest.allow_next_level.connect(open_exit)
-	self.monitorable = false
+
 func _input(event):
 	if area_active and event.is_action_pressed("interact"):
 		get_tree().change_scene_to_file(next_level)
@@ -24,8 +24,11 @@ func change_state(area):
 		interact_button_guide.visible = false
 func open_exit():
 	self.monitorable = true
-
-
+	self.monitoring = true
 func _on_area_entered(area):
 	area_active = true
 	interact_button_guide.visible = true
+func config():
+	self.monitorable = false
+	self.monitoring = false
+	interact_button_guide.visible = false

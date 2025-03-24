@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt0n45pkert4i"]
+[gd_scene load_steps=4 format=3 uid="uid://dt0n45pkert4i"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/menus/main_menu.gd" id="1_g7k0y"]
-[ext_resource type="AudioStream" uid="uid://eh3ff5ewbsgq" path="res://assets/audio/music/the_journey_begins.wav" id="2_0gvog"]
-[ext_resource type="Texture2D" uid="uid://dgb7rugkmitm7" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="3_pv8kx"]
+[ext_resource type="Texture2D" uid="uid://ddbclqfehkpbg" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="3_owmhr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jlktm"]
 font_size = 30
@@ -55,33 +54,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -124.0
-offset_right = 120.0
-offset_bottom = -56.0
+offset_left = -152.0
+offset_top = -111.772
+offset_right = 152.0
+offset_bottom = -66.7724
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerTitle"]
+[node name="Panel" type="Panel" parent="MarginContainerTitle"]
 layout_mode = 2
-size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="MarginContainerTitle/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainerTitle"]
 layout_mode = 2
 text = "The Way of The Ninja"
 label_settings = SubResource("LabelSettings_jlktm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_0gvog")
-autoplay = true
-
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(320.5, 160.256)
-scale = Vector2(1.01719, 1.03928)
-texture = ExtResource("3_pv8kx")
+position = Vector2(320, 160.759)
+scale = Vector2(1, 1.00474)
+texture = ExtResource("3_owmhr")
 
 [connection signal="pressed" from="MarginContainerButtons/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainerButtons/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

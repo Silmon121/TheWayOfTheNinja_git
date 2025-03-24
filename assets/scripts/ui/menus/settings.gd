@@ -1,6 +1,8 @@
 extends Control
 #Getting type of window mode already being used
 func _ready():
+	AudioManager.turn_off_audio()
+	AudioManager.main_menu.play()
 	if(DisplayServer.window_get_mode() == 3):
 		%OptionButton.selected = 0
 	elif(DisplayServer.window_get_mode() == 0):

@@ -1,8 +1,10 @@
-extends Node
+extends Node2D
 
 var main_node: Node
+@export_file var current_level_path: String
 
 signal level_changed
+
 func get_current_scene() -> Node:
 	#This will get the scene where player currently is
 	#In the root there are autoloads first as it's children, but main node e.g Dojo is always last so I am using last index of roots children to get the e.g Dojo node.
@@ -18,8 +20,12 @@ func resume_game():
 func next_level(new_level):
 	get_tree().change_scene_to_file(new_level)
 	level_changed.emit() #This will be used later to set health back to 100 when player reaches new level
-func restore_player_parameters():
-	HealthManager.fill_health()
-	StaminaManager.fill_stamina()
-	ChakraManager.fill_chakra()
+func reset_stats():
+	LevelManager.current_level_path = current_level_path
 	AbilityManager.restore_abilities()
+	AudioManager.turn_off_audio()
+	DialogManager.dialog_in_process = false
+	ChakraManager.current_chakra = ChakraManager.max_chakra
+	StaminaManager.current_stamina = StaminaManager.max_stamina
+func retry():
+	get_tree().change_scene_to_file(current_level_path)

@@ -1,6 +1,7 @@
 extends Control
 func _ready():
-	LevelManager.get_current_scene()
+	LevelManager.reset_stats()
+	AudioManager.main_menu.play()
 #Start button pressed
 func _on_start_button_pressed():
 	LevelManager.next_level("res://assets/scenes/levels/tutorial_level_dojo.tscn")

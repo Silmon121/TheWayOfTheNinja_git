@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://by0e5oojd2wkt"]
+[gd_scene load_steps=9 format=3 uid="uid://by0e5oojd2wkt"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/menus/settings.gd" id="1_amaqj"]
-[ext_resource type="Texture2D" uid="uid://dgb7rugkmitm7" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="1_j1v34"]
 [ext_resource type="AudioStream" uid="uid://eh3ff5ewbsgq" path="res://assets/audio/music/the_journey_begins.wav" id="2_a4y6q"]
+[ext_resource type="Texture2D" uid="uid://ddbclqfehkpbg" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="3_dhf1o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_symwc"]
 font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ap1k"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_4knl5"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jmya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrbtg"]
 font_size = 14
 
 [node name="Settings" type="Control"]
@@ -36,34 +44,36 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="MarginContainerButtons"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerButtons/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerButtons"]
 layout_mode = 2
-offset_right = 381.0
-offset_bottom = 66.0
-grow_horizontal = 2
-size_flags_vertical = 4
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="HeadLine" type="Label" parent="MarginContainerButtons/Panel/VBoxContainer"]
+[node name="HeadLine" type="Label" parent="MarginContainerButtons/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 label_settings = SubResource("LabelSettings_symwc")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerButtons/Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerButtons/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
 alignment = 1
 
-[node name="WindowMode" type="Label" parent="MarginContainerButtons/Panel/VBoxContainer/HBoxContainer"]
+[node name="WindowMode" type="Label" parent="MarginContainerButtons/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Window"
 label_settings = SubResource("LabelSettings_2ap1k")
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainerButtons/Panel/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainerButtons/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainerButtons/Panel/VBoxContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainerButtons/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 2
@@ -71,6 +81,32 @@ popup/item_0/text = "Full-Screen"
 popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "Master volume"
+label_settings = SubResource("LabelSettings_4knl5")
+
+[node name="HSlider" type="HSlider" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label2" type="Label" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_0jmya")
+
+[node name="HSlider2" type="HSlider" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_qrbtg")
+
+[node name="HSlider3" type="HSlider" parent="MarginContainerButtons/VBoxContainer"]
+layout_mode = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_a4y6q")
@@ -87,8 +123,8 @@ text = "Back"
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(320.5, 160.256)
-scale = Vector2(1.01719, 1.03928)
-texture = ExtResource("1_j1v34")
+scale = Vector2(1.01719, 1.03217)
+texture = ExtResource("3_dhf1o")
 
-[connection signal="item_selected" from="MarginContainerButtons/Panel/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainerButtons/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
