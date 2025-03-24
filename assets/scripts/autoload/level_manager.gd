@@ -21,8 +21,11 @@ func next_level(new_level):
 	get_tree().change_scene_to_file(new_level)
 	level_changed.emit() #This will be used later to set health back to 100 when player reaches new level
 func reset_stats():
+	LevelManager.current_level_path = current_level_path
 	AbilityManager.restore_abilities()
 	AudioManager.turn_off_audio()
 	DialogManager.dialog_in_process = false
+	ChakraManager.current_chakra = ChakraManager.max_chakra
+	StaminaManager.current_stamina = StaminaManager.max_stamina
 func retry():
 	get_tree().change_scene_to_file(current_level_path)

@@ -13,16 +13,14 @@ func take_damage(ammount: int):
 	health -= ammount
 	DamageNumbers.display_number(ammount, self.global_position, "enemy")
 	if health <= 0:
-		health = 0
 		die()
 	if custom_take_damage.is_valid():
 		custom_take_damage.call()
 	if health_bar != null:
 		health_bar.update()
 func die():
+	health = 0
 	if animation.has_animation("death_"+DirectionManager.anim_direction.to_lower()):
 		animation.play("death_" + DirectionManager.anim_direction.to_lower())
-	else:
-		destroy()
 func destroy():
 	queue_free()

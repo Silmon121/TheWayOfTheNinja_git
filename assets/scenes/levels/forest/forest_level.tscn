@@ -1,23 +1,96 @@
-[gd_scene load_steps=8 format=3 uid="uid://pw3jimefuxpw"]
+[gd_scene load_steps=15 format=3 uid="uid://pw3jimefuxpw"]
 
 [ext_resource type="Texture2D" uid="uid://j4wxnhoaa5p3" path="res://assets/art/levels/forest_level/tileset/forest_level_tileset.png" id="1_200u7"]
 [ext_resource type="Script" path="res://assets/scripts/levels/forest_level.gd" id="1_lsvrq"]
 [ext_resource type="PackedScene" uid="uid://s6ky1gpoca0r" path="res://assets/scenes/levels/forest/forest_parallax_bg.tscn" id="2_eitcc"]
 [ext_resource type="PackedScene" uid="uid://b5c3jw6j5v2mx" path="res://assets/scenes/ui/ui.tscn" id="3_mi3lu"]
 [ext_resource type="PackedScene" uid="uid://db2a7f7j8y7gj" path="res://assets/scenes/player/player.tscn" id="5_cfj02"]
+[ext_resource type="PackedScene" uid="uid://d2ip5uu6bc14y" path="res://assets/scenes/paths/enemy_ninja_path.tscn" id="6_ech27"]
+[ext_resource type="Script" path="res://assets/scripts/ui/forest_quest.gd" id="7_howx3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jair4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xe3ts"]
 texture = ExtResource("1_200u7")
 texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13.5385, -16, -13.5385)
+0:0/0/physics_layer_1/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13.5385, -16, -13.5385)
+1:0/0/physics_layer_1/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_1/angular_velocity = 0.0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -13.5385, -16, -13.5385)
+2:0/0/physics_layer_1/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_1/angular_velocity = 0.0
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.33333, 16, -5.33333, 16, 16, -16, 16)
+0:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_1/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -5.33333, 16, -5.33333, 16, 16, -16, 16)
+1:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_o6wba"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_jair4")
+physics_layer_1/collision_layer = 256
+physics_layer_1/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_xe3ts")
+
+[sub_resource type="Curve2D" id="Curve2D_ijowv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 400, 256, 0, 0, 0, 0, 688, 256)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b3ftd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1202, 52, 0, 0, 0, 0, 1036, 52)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_100ij"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1207, 251, 0, 0, 0, 0, 1036, 251)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_wqubc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1331, 253, 0, 0, 0, 0, 1531, 252)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_0jk2o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1458, 52, 0, 0, 0, 0, 1385, 52)
+}
+point_count = 2
 
 [node name="ForestLevel" type="Node2D"]
 script = ExtResource("1_lsvrq")
@@ -29,7 +102,7 @@ current_level_path = "res://assets/scenes/levels/forest/forest_level.tscn"
 tile_set = SubResource("TileSet_o6wba")
 cell_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(589824, 0, 2, 589825, 0, 2, 589826, 0, 2, 589827, 0, 2, 589828, 0, 2, 589829, 0, 2, 589830, 0, 2, 589831, 0, 2, 589832, 0, 2, 589833, 0, 2, 589834, 0, 2, 589835, 0, 2, 589836, 0, 2, 589837, 0, 2, 589838, 0, 2, 589839, 0, 2, 589840, 0, 2, 589841, 0, 2, 589842, 0, 2, 589843, 0, 2, 589844, 0, 2, 589845, 0, 2, 589846, 0, 2, 589847, 0, 2, 589848, 0, 2, 589849, 0, 2, 589850, 0, 2, 589851, 0, 2, 589852, 0, 2, 589853, 0, 2, 589854, 0, 2, 589855, 0, 2, 589856, 0, 2, 589857, 0, 2, 589858, 0, 2, 589859, 0, 2, 589860, 0, 2, 589861, 0, 2, 589862, 0, 2, 589863, 0, 2, 589864, 0, 2, 589865, 0, 2, 589866, 0, 2, 589867, 0, 2, 589868, 0, 2, 589869, 0, 2, 589870, 0, 2, 589871, 0, 2, 589872, 0, 2, 589873, 0, 2, 589874, 0, 2)
+layer_0/tile_data = PackedInt32Array(589824, 1, 2, 589825, 65537, 2, 589826, 1, 2, 589827, 65537, 2, 589828, 1, 2, 589829, 65537, 2, 589830, 1, 2, 589831, 65537, 2, 589832, 1, 2, 589833, 65537, 2, 589834, 1, 2, 589835, 65537, 2, 589836, 1, 2, 589837, 65537, 2, 589838, 1, 2, 589839, 65537, 2, 589840, 1, 2, 589841, 65537, 2, 589842, 1, 2, 589843, 65537, 2, 589844, 1, 2, 589845, 65537, 2, 589846, 1, 2, 589847, 65537, 2, 589848, 1, 2, 589849, 65537, 2, 589850, 1, 2, 589851, 65537, 2, 589852, 1, 2, 589853, 65537, 2, 589854, 1, 2, 589855, 65537, 2, 589856, 1, 2, 589857, 65537, 2, 589858, 1, 2, 589859, 65537, 2, 589860, 1, 2, 589861, 65537, 2, 589862, 1, 2, 589863, 65537, 2, 589864, 1, 2, 589865, 65537, 2, 589866, 1, 2, 589867, 65537, 2, 589868, 1, 2, 589869, 65537, 2, 589870, 1, 2, 589871, 65537, 2, 589872, 1, 2, 589873, 65537, 2, 589874, 1, 2, 524300, 1, 1, 524302, 131073, 1, 458764, 1, 1, 458766, 131073, 1, 393228, 1, 0, 393229, 65537, 0, 393230, 131073, 0, 196620, 1, 0, 262156, 1, 1, 327692, 1, 1, 196621, 65537, 0, 196622, 131073, 0, 262158, 131073, 1, 327694, 131073, 1, 393231, 1, 0, 458767, 1, 1, 524303, 1, 1, 393232, 65537, 0, 393233, 65537, 0, 393234, 65537, 0, 393235, 65537, 0, 393236, 65537, 0, 393237, 131073, 0, 458773, 131073, 1, 524309, 131073, 1, 524320, 1, 1, 458784, 1, 1, 393248, 1, 0, 327712, 1, 1, 262176, 1, 1, 393249, 65537, 0, 393250, 65537, 0, 393251, 65537, 0, 393252, 65537, 0, 393253, 131073, 0, 458789, 131073, 1, 524325, 131073, 1, 327717, 131073, 1, 262181, 131073, 1, 196645, 131073, 0, 196644, 65537, 0, 196643, 65537, 0, 196642, 65537, 0, 196641, 65537, 0, 196640, 1, 0, 393259, 1, 0, 196651, 1, 0, 196652, 65537, 0, 196653, 131073, 0, 393260, 65537, 0, 393261, 131073, 0, 524333, 131073, 1, 458797, 131073, 1, 262189, 131073, 1, 327725, 131073, 1, 524331, 1, 1, 458795, 1, 1, 327723, 1, 1, 262187, 1, 1)
 
 [node name="Player" parent="." instance=ExtResource("5_cfj02")]
 position = Vector2(49, 250)
@@ -49,3 +122,29 @@ editor_draw_drag_margin = true
 
 [node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_mi3lu")]
 player = NodePath("../Player")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemy_ninja_path" parent="Enemies" instance=ExtResource("6_ech27")]
+curve = SubResource("Curve2D_ijowv")
+
+[node name="enemy_ninja_path2" parent="Enemies" instance=ExtResource("6_ech27")]
+type = 1
+
+[node name="enemy_ninja_path3" parent="Enemies" instance=ExtResource("6_ech27")]
+curve = SubResource("Curve2D_b3ftd")
+type = 1
+
+[node name="enemy_ninja_path4" parent="Enemies" instance=ExtResource("6_ech27")]
+curve = SubResource("Curve2D_100ij")
+type = 1
+
+[node name="enemy_ninja_path5" parent="Enemies" instance=ExtResource("6_ech27")]
+curve = SubResource("Curve2D_wqubc")
+
+[node name="enemy_ninja_path6" parent="Enemies" instance=ExtResource("6_ech27")]
+curve = SubResource("Curve2D_0jk2o")
+type = 1
+
+[node name="ForestQuest" type="Node2D" parent="."]
+script = ExtResource("7_howx3")

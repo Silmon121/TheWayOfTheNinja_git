@@ -6,14 +6,15 @@ func _ready():
 	load_quests(quest_file)
 func _process(delta):
 	enemies_defeated()
+	if active_task == "quest1" and dialog_area.area_active:
+		DialogManager.start_dialog(dialog_area.dialog_file, "quest1", "mr_tuto")
+		dialog_area.disable()
+		next_task()
 func _input(event):
 	if event.is_action_pressed("interact") and dialog_area.area_active:
 		if active_task == "quest4":
 			if !DialogManager.dialog_in_process:
 				LevelManager.next_level("res://assets/scenes/levels/forest/forest_level.tscn")
-		if active_task == "quest1":
-			await get_tree().create_timer(0.1).timeout
-			next_task()
 		if task_done:
 			next_task()
 func _on_training_ground_quest_area_area_entered(area):

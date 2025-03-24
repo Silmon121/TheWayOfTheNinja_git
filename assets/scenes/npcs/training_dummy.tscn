@@ -31,6 +31,7 @@ position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_limir")
 
 [node name="HitBox" parent="." node_paths=PackedStringArray("entity") groups=["enemy"] instance=ExtResource("3_2m7ro")]
+deal_damage = false
 entity = NodePath("..")
 
 [node name="DummyCollisionBox" type="CollisionShape2D" parent="HitBox"]

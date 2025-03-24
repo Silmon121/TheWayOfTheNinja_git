@@ -1,6 +1,6 @@
 extends Node
 
-var max_stamina: float = 100;
+var max_stamina: float = 150;
 var current_stamina: float = max_stamina;
 var stamina_recovery_rate: float = 0.5;
 var stamina_depletion_rate: float = 0.5;

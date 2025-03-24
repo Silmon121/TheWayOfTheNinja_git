@@ -1,6 +1,6 @@
 extends Control
 func _ready():
-	LevelManager.reset_level()
+	LevelManager.reset_stats()
 	AudioManager.main_menu.play()
 #Start button pressed
 func _on_start_button_pressed():

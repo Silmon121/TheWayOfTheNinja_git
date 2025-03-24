@@ -7,6 +7,7 @@ extends LevelManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	LevelManager.current_level_path = current_level_path
 	reset_stats()
 	AudioManager.garden.play()
 	garden_quest.quest_progress()

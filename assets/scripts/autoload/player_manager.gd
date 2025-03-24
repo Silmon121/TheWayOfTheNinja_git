@@ -19,11 +19,15 @@ var health: int
 
 signal health_changed()
 signal nearest_area_changed(nearest_area)
+signal player_died()
 
 func take_damage(ammount: int):
 	health -= ammount
 	if health <= 0:
 		health = 0
-		queue_free()
+		PlayerManager.player_died.emit()
+		destroy()
 	DamageNumbers.display_number(ammount, global_position, "player")
 	PlayerManager.health_changed.emit()
+func destroy():
+	queue_free()

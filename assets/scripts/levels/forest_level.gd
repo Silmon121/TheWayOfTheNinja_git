@@ -1,5 +1,6 @@
 extends LevelManager
 
 func _ready():
-	LevelManager.reset_level()
+	reset_stats()
+	LevelManager.reset_stats()
 	AudioManager.forest.play()

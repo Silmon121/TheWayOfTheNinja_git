@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5c3jw6j5v2mx"]
+[gd_scene load_steps=30 format=3 uid="uid://b5c3jw6j5v2mx"]
 
 [ext_resource type="Script" path="res://assets/scripts/ui/ui.gd" id="1_2qvac"]
 [ext_resource type="Texture2D" uid="uid://cts5vl4514w5k" path="res://assets/art/ui/hud/dialogue/dialogue_box.png" id="2_amdgb"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bk0ypdkd6maun" path="res://assets/art/ui/hud/action_buttons/shuriken_cooldown_frame.png" id="14_pa53g"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/action_buttons/shuriken_action_button.gd" id="15_f0rla"]
 [ext_resource type="Script" path="res://assets/scripts/ui/hud/quest_system.gd" id="16_mvmce"]
+[ext_resource type="PackedScene" uid="uid://bcnbke5f10qd6" path="res://assets/scenes/ui/menus/death_screen.tscn" id="20_wtccx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1jlkb"]
 font_size = 6
@@ -324,6 +325,14 @@ label_settings = SubResource("LabelSettings_cvsn1")
 autowrap_mode = 3
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_s5lur")]
+
+[node name="death_screen" parent="." instance=ExtResource("20_wtccx")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [connection signal="timeout" from="Hud/BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton/FireballCDTimer" to="Hud/BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerFireball/FireballButton" method="_on_fireball_cd_timer_timeout"]
 [connection signal="timeout" from="Hud/BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton/KunaiCDTimer" to="Hud/BasicInfoContainer/VBoxContainer/ActionButtonsCon/VBoxContainer/MarginContainer/HBoxContainerButtons/VBoxContainerKunai/KunaiButton" method="_on_kunai_cd_timer_timeout"]
