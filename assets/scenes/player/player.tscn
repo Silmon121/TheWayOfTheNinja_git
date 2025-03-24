@@ -2269,7 +2269,7 @@ texture = ExtResource("6_qwsgl")
 hframes = 5
 vframes = 2
 
-[node name="HurtBox" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("10_kbd4f")]
+[node name="HurtBox" parent="." node_paths=PackedStringArray("entity") groups=["katana"] instance=ExtResource("10_kbd4f")]
 collision_layer = 16
 collision_mask = 32
 entity = NodePath("..")

@@ -19,7 +19,6 @@ func _ready():
 	health = max_health 
 	katana_hitbox.disabled = true
 	LevelManager.get_current_scene() #This will get the main node of the scene where the player currently is.
-	#DialogManager.dialog_opened.connect(idle) #When the dialog opens, then the player will enter idle state.
 
 func _physics_process(delta):
 	move_and_slide()

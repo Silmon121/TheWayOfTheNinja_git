@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgxa0achamnye"]
+
+[ext_resource type="Script" path="res://assets/scripts/ui/menus/credits.gd" id="1_25pum"]
+[ext_resource type="Texture2D" uid="uid://ddbclqfehkpbg" path="res://assets/art/ui/menus/main_menu/main_menu_bg.png" id="1_tom76"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqmv4"]
+font_size = 40
+font_color = Color(1, 0.156863, 0.439216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwf7g"]
+font_size = 30
+font_color = Color(0.890196, 0.054902, 0.054902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qx2j6"]
+font_size = 20
+font_color = Color(0.105882, 0.717647, 0.8, 1)
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25pum")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -98.0
+offset_right = 218.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Thank you for playing!"
+label_settings = SubResource("LabelSettings_jqmv4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -23.0
+offset_right = 160.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+text = "The Way of The Ninja"
+label_settings = SubResource("LabelSettings_gwf7g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -116.0
+offset_right = 129.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer3"]
+layout_mode = 2
+text = "Game made by: Silmon121"
+label_settings = SubResource("LabelSettings_qx2j6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_tom76")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -67.0
+offset_right = 42.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
