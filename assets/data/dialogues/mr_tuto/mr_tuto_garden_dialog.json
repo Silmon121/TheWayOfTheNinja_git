@@ -2,18 +2,18 @@
   "quest1": [
     "There you are!",
     "Hope you remember everything we went through!",
-    "Because now you'll use everything you've learned.",
-    "Go to the training ground, which is to the right."
+    "Because now, you'll use everything you've learned.",
+    "Go to the training ground on the right."
   ],
   "quest2":[
     "Why are you still here?",
-    "Go to the training ground, to the right."
+    "Go to the training ground on the right."
   ],
   "quest3": [
     "Your task is to defeat the spirits of yourself!",
     "Go and use everything I've taught you.",
-    "Ahh, wait I forgot to tell you something",
-    "To fall through the platforms use S + Space key combination.",
+    "Ah, wait! I forgot to tell you something",
+    "To fall through the platforms, use S + Space key combination.",
     "That's all.",
     "Now go!"
   ],
@@ -21,10 +21,10 @@
     "Well done!",
     "You are now qualified to be a ninja!",
     "But don't get cocky!",
-    "You are still just a genin, which is the lowest rank.",
-    "Stay humble and practice and maybe one day you'll be able to become the greates ninja!",
+    "You are still just a genin, the lowest rank.",
+    "Stay humble, practice, and maybe one day you'll become the best ninja!",
     "Now, don't just stand there!",
-    "Your first mission is to eliminate enemy troops in the forest not far from here.",
+    "Your first mission is to eliminate enemy troops in the forest, not far from here.",
     "Come speak to me when you are ready to go.",
     "Good luck!"
   ]

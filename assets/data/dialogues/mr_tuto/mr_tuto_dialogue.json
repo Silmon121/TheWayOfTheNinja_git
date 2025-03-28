@@ -1,61 +1,61 @@
 {
     "quest1":[
-        "Welcome to your final exam Kazumi!",
-        "Now let's go through everything I've taught you.",
+        "Welcome to your final exam, Kazumi! (Press E or Mouse1 for the next line.)",
+        "Now, let's go through everything I've taught you.",
         "Try to get to me using A or D."
     ],
     "quest2":[
         "Well done!",
-        "You can ask for advice by pressing E."
+        "You can ask for advice by pressing the E key."
     ],
     "quest3":[
         "Very good!",
         "Let's try running.",
         "Being able to run is very important in combat.",
-        "You can escape from dangerous situations easily.",
-        "Try pressing SHIFT when holding A or D."
+        "As it allows to escape from dangerous situations easily.",
+        "Try pressing SHIFT while holding A or D."
     ],
     "quest4":[
     	"Well done!",
 	    "Let's practice jumping.",
-	    "Jumping is also important, when moving through the difficult terrain."
+	    "Jumping is also important when moving through the difficult terrain."
     ],
     "quest5":[
-    	"Excelent!",
+    	"Excellent!",
 	    "It's time for combat!",
 	    "We'll use that training dummy over there.",
-	    "Try attacking it with your katana using mouse1."
+	    "Try attacking it with your katana using Mouse1."
     ],
     "quest6":[
     	"Now you are a real fighter!",
-	    "But close combat isn't alway the best approach.",
-	    "Time to practice long distance combat.",
+	    "But close combat isn't always the best approach.",
+	    "Time to practice long-distance combat.",
 	    "Let's start with your kunai.",
-	    "Throw kunai at the dummy using C key"
+	    "Throw a kunai at the dummy using the C key."
     ],
     "quest7":[
     	"Splendid!",
-	    "Now try throwing shuriken usin X key."
+	    "Now, try throwing a shuriken using the X key."
     ],
     "quest8":[
         "Good!",
-	    "Let's get to more advanced combat technique!",
+	    "Let's move on to a more advanced combat technique!",
 	    "Chakra combat!",
-	    "Chakra combat is a very powerful type, but it'll consume your chakra.",
-	    "Therefore you need to think before using it.",
-	    "Try to shoot fireball using W key."
+	    "Chakra combat is very powerful, but it consumes your chakra.",
+	    "Therefore, you need to think before using it.",
+	    "Try shooting a fireball using the W key."
     ],
     "quest9":[
-    	"Excelent work!",
+    	"Excellent work!",
 	    "You must feel exhausted!",
-	    "Try regenerating your chakra by holding Ctrl key."
+	    "Try regenerating your chakra by holding the Ctrl key."
     ],
     "quest10":[
     	"Feeling better?",
         "You better be!",
 	    "Because now, we'll proceed to the next part of your exam.",
-	    "Go through the door to the garden I'll be waiting for you there.",
-        "But if you want to practice some more you can.",
+	    "Go through the door to the garden. I'll be waiting for you there.",
+        "But if you want to practice some more, you can.",
         "Take your time."
     ]
 }
