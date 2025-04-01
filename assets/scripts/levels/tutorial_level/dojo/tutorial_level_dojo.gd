@@ -9,6 +9,7 @@ extends LevelManager
 func _ready():
 	reset_stats()
 	AudioManager.dojo.play()
+	DamageNumbers.player_attacked_enemy = false
 	await get_tree().create_timer(0.2).timeout
 	start_tutorial()
 	

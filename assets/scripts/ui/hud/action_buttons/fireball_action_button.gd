@@ -6,7 +6,7 @@ func _ready():
 func _process(_delta):
 	if %FireballCDTimer.time_left != 0:
 		$CDFill.value = %FireballCDTimer.time_left
-	elif ChakraManager.current_chakra == 0:
+	elif ChakraManager.current_chakra < 10:
 		$CDFill.value = $CDFill.max_value
 	else:
 		$CDFill.value = %FireballCDTimer.time_left
