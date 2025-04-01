@@ -35,6 +35,8 @@ func _process(delta):
 		hurt_box.monitoring = false
 		hit_box.deal_damage = false
 		anim_path.pause()
+		await get_tree().create_timer(3).timeout
+		queue_free()
 func _on_ninja_spirit_animation_animation_finished(anim_name):
 	if anim_name == "death_" + DirectionManager.anim_direction.to_lower():
 		queue_free()

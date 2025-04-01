@@ -10,7 +10,7 @@ func _ready():
 	Quest.allow_next_level.connect(open_exit)
 
 func _input(event):
-	if area_active and event.is_action_pressed("interact"):
+	if area_active and event.is_action_pressed("interact") and !DialogManager.dialog_in_process:
 		get_tree().change_scene_to_file(next_level)
 func _on_area_exited(area):
 	area_active = false
