@@ -30,13 +30,20 @@ func _process(delta):
 			elif path.progress_ratio > previous_progress_ratio:
 				anim_movement.play("walk_right")
 			previous_progress_ratio = path.progress_ratio
-	else: 
-		hurt_box.monitorable = false
-		hurt_box.monitoring = false
-		hit_box.deal_damage = false
-		anim_path.pause()
-		await get_tree().create_timer(3).timeout
-		queue_free()
+	else:
+		if spirit.dead:
+			if path.progress_ratio > previous_progress_ratio or path.progress_ratio == 1:
+				anim_movement.play("death_right")
+			elif path.progress_ratio < previous_progress_ratio or path.progress_ratio == 0:
+				anim_movement.play("death_left")
+			hurt_box.monitorable = false
+			hurt_box.monitoring = false
+			hit_box.deal_damage = false
+			anim_path.pause()
+			await get_tree().create_timer(3).timeout
+			queue_free()
 func _on_ninja_spirit_animation_animation_finished(anim_name):
-	if anim_name == "death_" + DirectionManager.anim_direction.to_lower():
+	if anim_name == "death_left":
+		queue_free()
+	elif anim_name == "death_right":
 		queue_free()
