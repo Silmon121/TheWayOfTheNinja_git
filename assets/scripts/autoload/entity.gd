@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var damage: int
 @export var health_bar: EntityHealthBar
 @export var animation: AnimationPlayer
+var dead: bool = false
 var health: int 
 
 var custom_take_damage: Callable = Callable()
@@ -20,7 +21,6 @@ func take_damage(ammount: int):
 		health_bar.update()
 func die():
 	health = 0
-	if animation.has_animation("death_"+DirectionManager.anim_direction.to_lower()):
-		animation.play("death_" + DirectionManager.anim_direction.to_lower())
+	dead = true
 func destroy():
 	queue_free()
