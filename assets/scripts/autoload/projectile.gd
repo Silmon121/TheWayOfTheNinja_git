@@ -8,6 +8,7 @@ var spawn_rot: float
 @export var projectile_name: String
 @export var projectile_speed: int
 @export var damage: int
+var custom_hit_audio: Callable = Callable()
 
 @export_group("Animation")
 @export var anim_player: AnimationPlayer
@@ -21,13 +22,7 @@ func play_anim():
 		anim_player.play(projectile_name + "_" + DirectionManager.anim_direction.to_lower())
 #Method for the time when the projectile hits target
 func hit(projectile:Node):
-	match projectile.name:
-		"Fireball":
-			AudioManager.play_space_audio(AudioManager.fireball_hit, projectile.global_position)
-		"Kunai":
-			AudioManager.play_space_audio(AudioManager.kunai_hit, projectile.global_position)
-		"Shuriken":
-			AudioManager.play_space_audio(AudioManager.shuriken_hit, projectile.global_position)
+	custom_hit_audio.call()
 	destroy()
 #Method for removing the projectile from the scene tree
 func destroy():
